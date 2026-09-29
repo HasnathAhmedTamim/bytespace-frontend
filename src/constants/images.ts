@@ -6,6 +6,9 @@ export const images = {
     studentLaptop: "/images/people/student-laptop.png",
     studentTablet: "/images/people/student-tablet.png",
   },
+  icons: {
+    checkCircle: "/images/icons/check-circle.png",
+  },
   testimonials: {
     sarah: "/images/testimonials/sarah.png",
     james: "/images/testimonials/james.png",

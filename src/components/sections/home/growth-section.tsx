@@ -14,7 +14,7 @@ const stats = [
 
 export function GrowthSection() {
   return (
-    <section aria-labelledby="growth-heading" className="pt-16 pb-8 md:pt-24 md:pb-12 xl:pt-30 xl:pb-15">
+    <section aria-labelledby="growth-heading" className="pt-16 pb-8 md:pt-24 md:pb-10 xl:pt-30 xl:pb-9">
       <Container className="flex flex-col gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
         <div className="lg:max-w-140">
           <h2 id="growth-heading" className="heading-s text-balance text-neutral-950 md:heading-m">
