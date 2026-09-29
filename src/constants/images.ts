@@ -48,5 +48,8 @@ export const images = {
     springLime: "/images/shapes/spring-lime.png",
     springWhite: "/images/shapes/spring-white.png",
     springLimeFlat: "/images/shapes/spring-lime-flat.png",
+    cylinderLime: "/images/shapes/cylinder-lime.png",
+    pyramidWhite: "/images/shapes/pyramid-white.png",
+    torusWhite: "/images/shapes/torus-white.png",
   },
 } as const;
