@@ -22,11 +22,11 @@ export const images = {
     "/images/avatars/avatar-8.png",
   ],
   partners: [
-    "/images/partners/partner-1.png",
     "/images/partners/partner-2.png",
     "/images/partners/partner-3.png",
     "/images/partners/partner-4.png",
     "/images/partners/partner-5.png",
+    "/images/partners/partner-1.png",
   ],
   courses: {
     figma: "/images/courses/course-figma.png",
