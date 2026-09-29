@@ -47,6 +47,14 @@ export const images = {
   previews: {
     digitalAsset: "/images/previews/build-digital-asset.jpg",
   },
+  sneakPeek: {
+    digitalAsset: [
+      "/images/sneak-peek/digital-asset-1.jpg",
+      "/images/sneak-peek/digital-asset-2.jpg",
+      "/images/sneak-peek/digital-asset-3.jpg",
+      "/images/sneak-peek/digital-asset-4.jpg",
+    ],
+  },
   creators: {
     purepearlStudio: "/images/creators/purepearl-studio.png",
     northwindAcademy: "/images/creators/northwind-academy.png",

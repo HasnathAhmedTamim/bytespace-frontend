@@ -19,6 +19,18 @@ function fallbackContent(course: Course, index: number) {
       { title: "Your First Hands-on Project", duration: previewDurations[(index + 2) % 6] },
     ],
     pitch: "Ready to Dive In? Enroll Now and Start Learning Something New Today!",
+    description: [
+      `${course.title} is a ${course.level.toLowerCase()} course from ${course.creator.displayName} that turns ${category.toLowerCase()} theory into skills you can use straight away. Every lesson is short, focused and built around a practical outcome.`,
+      `You'll start with the core ideas and tools, then work through guided exercises that build on each other. By the end you'll have completed a hands-on project you can share, along with the confidence to keep going on your own.`,
+    ],
+    gallery: [],
+    keyPoints: [
+      `${category} Fundamentals`,
+      "Tools and Workflow Setup",
+      "Guided Hands-on Exercises",
+      "Common Mistakes and How to Avoid Them",
+      "Final Project and Feedback",
+    ],
   };
 }
 

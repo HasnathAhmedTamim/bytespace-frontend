@@ -35,6 +35,11 @@ export type CourseLesson = {
   duration: string;
 };
 
+export type CourseImage = {
+  src: string;
+  alt: string;
+};
+
 export type CourseDetail = Course & {
   headline: string;
   subtitle: string;
@@ -42,4 +47,7 @@ export type CourseDetail = Course & {
   preview: string;
   lessonPreview: CourseLesson[];
   pitch: string;
+  description: string[];
+  gallery: CourseImage[];
+  keyPoints: string[];
 };
