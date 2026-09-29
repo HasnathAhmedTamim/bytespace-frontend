@@ -5,17 +5,28 @@ import { Card } from "@/components/ui/card";
 import { CourseCard } from "@/components/courses/course-card";
 import { Section } from "@/components/shared/section";
 import { Pagination } from "@/components/shared/pagination";
+import { routes } from "@/constants/navigation";
 import { catalogue } from "@/data/catalogue";
 import { courseResultsId, coursesHref, queryCourses, type CourseFilters } from "@/lib/course-filters";
+import { cn } from "@/lib/utils";
+import type { Course } from "@/types/course";
 
-export function CourseResults({ filters }: { filters: CourseFilters }) {
-  const { items, total, page, pageCount, start } = queryCourses(catalogue, filters);
+type CourseResultsProps = {
+  filters: CourseFilters;
+  courses?: readonly Course[];
+  /** Page the filters and pagination link to; defaults to the Courses page. */
+  pathname?: string;
+  className?: string;
+};
+
+export function CourseResults({ filters, courses = catalogue, pathname = routes.courses, className }: CourseResultsProps) {
+  const { items, total, page, pageCount, start } = queryCourses(courses, filters);
 
   return (
     <Section
       id={courseResultsId}
       aria-labelledby="course-results-heading"
-      className="scroll-mt-(--header-height) pt-10 pb-16 md:pt-12 md:pb-20 xl:pt-19 xl:pb-18 3xl:pt-19.25"
+      className={cn("scroll-mt-(--header-height) pt-10 pb-16 md:pt-12 md:pb-20 xl:pt-19 xl:pb-18 3xl:pt-19.25", className)}
     >
         <h2 id="course-results-heading" className="sr-only">
           Courses
@@ -41,7 +52,7 @@ export function CourseResults({ filters }: { filters: CourseFilters }) {
               Try a different search term or remove some filters to see more courses.
             </p>
             <Button asChild variant="primary">
-              <Link href={coursesHref({})}>Clear all filters</Link>
+              <Link href={coursesHref({}, {}, undefined, pathname)}>Clear all filters</Link>
             </Button>
           </Card>
         )}
@@ -49,7 +60,7 @@ export function CourseResults({ filters }: { filters: CourseFilters }) {
         <Pagination
           page={page}
           pageCount={pageCount}
-          hrefForPage={(target) => coursesHref(filters, { page: target }, courseResultsId)}
+          hrefForPage={(target) => coursesHref(filters, { page: target }, courseResultsId, pathname)}
           className="mt-12 md:mt-16 xl:mt-18"
         />
     </Section>

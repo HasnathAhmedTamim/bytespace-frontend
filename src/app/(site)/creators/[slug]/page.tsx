@@ -1,0 +1,50 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+import { Container } from "@/components/shared/container";
+import { CourseResults } from "@/components/sections/courses/course-results";
+import { CoursesToolbar } from "@/components/sections/courses/courses-toolbar";
+import { CreatorHero } from "@/components/sections/creators/creator-hero";
+import { routes } from "@/constants/navigation";
+import { catalogue } from "@/data/catalogue";
+import { getCreator } from "@/data/creators";
+import { categoryOptions, parseCourseFilters } from "@/lib/course-filters";
+
+export async function generateMetadata({ params }: PageProps<"/creators/[slug]">): Promise<Metadata> {
+  const creator = getCreator((await params).slug);
+  if (!creator) return {};
+
+  return {
+    title: creator.displayName,
+    description: `${creator.headline}. Browse courses by ${creator.displayName} on ByteSpace.`,
+  };
+}
+
+export default async function CreatorPage({ params, searchParams }: PageProps<"/creators/[slug]">) {
+  const creator = getCreator((await params).slug);
+  if (!creator) notFound();
+
+  const filters = parseCourseFilters(await searchParams);
+  const courses = catalogue.filter((course) => course.creator.slug === creator.slug);
+  const categories = categoryOptions.filter((option) =>
+    courses.some((course) => course.categories.includes(option.value))
+  );
+  const pathname = routes.creator(creator.slug);
+
+  return (
+    <>
+      <CreatorHero creator={creator} products={courses.length} />
+      <section aria-label="Course filters" className="pt-10 md:pt-12 xl:pt-15.5">
+        <Container>
+          <CoursesToolbar filters={filters} pathname={pathname} categories={categories} />
+        </Container>
+      </section>
+      <CourseResults
+        filters={filters}
+        courses={courses}
+        pathname={pathname}
+        className="pt-8 md:pt-10 xl:pt-10 xl:pb-15.5"
+      />
+    </>
+  );
+}

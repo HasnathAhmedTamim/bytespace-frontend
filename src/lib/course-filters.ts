@@ -93,7 +93,12 @@ export function parseCourseFilters(params: SearchParams): CourseFilters {
   };
 }
 
-export function coursesHref(filters: CourseFilters, patch: FilterPatch = {}, hash?: string) {
+export function coursesHref(
+  filters: CourseFilters,
+  patch: FilterPatch = {},
+  hash?: string,
+  pathname: string = routes.courses
+) {
   const next: FilterPatch = { ...filters, page: undefined, ...patch };
   const params = new URLSearchParams();
 
@@ -104,7 +109,7 @@ export function coursesHref(filters: CourseFilters, patch: FilterPatch = {}, has
   }
 
   const query = params.toString();
-  return `${routes.courses}${query ? `?${query}` : ""}${hash ? `#${hash}` : ""}`;
+  return `${pathname}${query ? `?${query}` : ""}${hash ? `#${hash}` : ""}`;
 }
 
 function matchesQuery(course: Course, filters: CourseFilters) {

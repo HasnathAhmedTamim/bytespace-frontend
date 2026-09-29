@@ -57,6 +57,7 @@ export const images = {
   },
   creators: {
     purepearlStudio: "/images/creators/purepearl-studio.png",
+    purepearlStudioPortrait: "/images/creators/purepearl-studio-portrait.png",
     northwindAcademy: "/images/creators/northwind-academy.png",
     pixelPineStudio: "/images/creators/pixel-pine-studio.png",
     lumenLabs: "/images/creators/lumen-labs.png",
