@@ -5,14 +5,15 @@ import { Input } from "@/components/ui/input";
 import { Container } from "@/components/shared/container";
 import { SearchScopeSelect } from "@/components/courses/search-scope-select";
 import { routes } from "@/constants/navigation";
-import type { SearchScope } from "@/constants/search";
+import type { CourseFilters } from "@/lib/course-filters";
 
 type CoursesSearchBannerProps = {
-  query?: string;
-  scope?: SearchScope;
+  filters?: CourseFilters;
 };
 
-export function CoursesSearchBanner({ query, scope }: CoursesSearchBannerProps) {
+export function CoursesSearchBanner({ filters = {} }: CoursesSearchBannerProps) {
+  const { q: query, scope, ...refinements } = filters;
+
   return (
     <section className="bg-primary-800 bg-grid bg-position-[calc(50%+60px)_-2px] pt-(--header-height)">
       <Container className="flex flex-col items-center pt-10 pb-12 text-center md:pt-16 md:pb-17.25">
@@ -23,6 +24,9 @@ export function CoursesSearchBanner({ query, scope }: CoursesSearchBannerProps) 
           role="search"
           className="mt-6 flex w-full max-w-[39rem] items-start gap-2.5 md:mt-8 md:gap-4"
         >
+          {Object.entries(refinements).map(([name, value]) =>
+            value ? <input key={name} type="hidden" name={name} value={value} /> : null
+          )}
           <label htmlFor="courses-search" className="sr-only">
             Search courses
           </label>
