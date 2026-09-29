@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Star } from "lucide-react";
 
+import { LearningProgressCard } from "@/components/shared/learning-progress-card";
 import { images } from "@/constants/images";
 import { cn } from "@/lib/utils";
 
@@ -20,13 +21,7 @@ export function HeroCards() {
         </p>
       </FloatingCard>
 
-      <FloatingCard className="top-[137px] left-[842px] w-58 py-4">
-        <p className="label-s font-normal text-neutral-950">Learning Progress</p>
-        <p className="mt-3 font-sans text-5xl leading-none font-bold text-neutral-950">55%</p>
-        <div className="mt-3.75 h-2 rounded-full bg-neutral-50">
-          <div className="h-full w-[56%] rounded-full bg-secondary-400" />
-        </div>
-      </FloatingCard>
+      <LearningProgressCard size="sm" className="absolute top-[137px] left-[842px]" />
 
       <FloatingCard className="top-[323px] left-[328px] w-[16.125rem] pt-3.5 pb-4">
         <p className="label-m text-neutral-950">Happy Students</p>

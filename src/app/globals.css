@@ -213,6 +213,18 @@
   background-position: calc(50% + 60px) 0;
 }
 
+/* Soft blurred colour blob; set the peak colour with --glow */
+@utility bg-glow {
+  background-image: radial-gradient(
+    closest-side,
+    var(--glow) 0%,
+    color-mix(in srgb, var(--glow) 84%, transparent) 20%,
+    color-mix(in srgb, var(--glow) 50%, transparent) 40%,
+    color-mix(in srgb, var(--glow) 12%, transparent) 70%,
+    transparent 100%
+  );
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
