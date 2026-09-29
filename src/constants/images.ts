@@ -62,6 +62,12 @@ export const images = {
     lumenLabs: "/images/creators/lumen-labs.png",
     bluebirdSchool: "/images/creators/bluebird-school.png",
   },
+  reviewers: {
+    purepearlStudio: "/images/reviewers/purepearl-studio.png",
+    albertFlores: "/images/reviewers/albert-flores.png",
+    codyFisher: "/images/reviewers/cody-fisher.png",
+    brooklynSimmons: "/images/reviewers/brooklyn-simmons.png",
+  },
   categories: {
     design: "/images/categories/design.png",
     development: "/images/categories/development.png",

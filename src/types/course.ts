@@ -45,6 +45,19 @@ export type CourseModule = {
   summary: string;
 };
 
+export type CourseReview = {
+  name: string;
+  role: string;
+  avatar: string;
+  rating: number;
+  /** ISO date the review was posted. */
+  date: string;
+  quote: string;
+};
+
+/** Number of reviews per star rating, from 5 stars down to 1. */
+export type RatingCounts = [number, number, number, number, number];
+
 export type CourseDetail = Course & {
   headline: string;
   subtitle: string;
@@ -58,4 +71,7 @@ export type CourseDetail = Course & {
   modules: CourseModule[];
   /** Learner progress through the course, 0–100. */
   progress: number;
+  reviewsIntro: string;
+  ratingCounts: RatingCounts;
+  learnerReviews: CourseReview[];
 };

@@ -69,5 +69,46 @@ export const courseDetailContent: Record<string, CourseDetailContent> = {
       },
     ],
     progress: 55,
+    reviewsIntro:
+      "Discover what our learners have to say about their experience with 'Build Digital Assets: A Comprehensive Guide.' Read reviews and ratings from individuals who have embarked on the transformative journey of mastering digital asset creation.",
+    ratingCounts: [720, 120, 21, 12, 16],
+    learnerReviews: [
+      {
+        name: "PurePearl Studio",
+        role: "UI/UX Designer",
+        avatar: images.reviewers.purepearlStudio,
+        rating: 5,
+        date: "2025-08-21",
+        quote:
+          "The course provided me with a comprehensive understanding of digital asset creation. The lessons were in-depth, practical, and immediately applicable to my work. Highly recommended!",
+      },
+      {
+        name: "Albert Flores",
+        role: "UI/UX Designer",
+        avatar: images.reviewers.albertFlores,
+        rating: 5,
+        date: "2025-08-02",
+        quote:
+          "This course transformed my approach to digital design. The combination of theory, hands-on exercises, and real-world applications made it a truly enriching experience. Excited to implement what I've learned!",
+      },
+      {
+        name: "Cody Fisher",
+        role: "UI/UX Designer",
+        avatar: images.reviewers.codyFisher,
+        rating: 5,
+        date: "2025-07-10",
+        quote:
+          "The project showcase and critique module created a collaborative environment where I could showcase my work, receive valuable feedback, and refine my skills. It added a unique and valuable dimension to the learning process.",
+      },
+      {
+        name: "Brooklyn Simmons",
+        role: "UI/UX Designer",
+        avatar: images.reviewers.brooklynSimmons,
+        rating: 5,
+        date: "2025-06-18",
+        quote:
+          "The lessons on optimizing digital assets for various platforms were particularly insightful. The course adapts to the evolving digital landscape, and the engaging content kept me motivated throughout.",
+      },
+    ],
   },
 };
