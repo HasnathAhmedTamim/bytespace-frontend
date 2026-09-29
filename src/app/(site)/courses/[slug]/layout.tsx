@@ -6,6 +6,7 @@ import { Container } from "@/components/shared/container";
 import { CourseEnrollCard } from "@/components/sections/course-details/course-enroll-card";
 import { CourseHero } from "@/components/sections/course-details/course-hero";
 import { CoursePreview } from "@/components/sections/course-details/course-preview";
+import { notFoundMetadata } from "@/constants/metadata";
 import { getCourseDetail, getCourseSlugs } from "@/lib/course-details";
 
 export function generateStaticParams() {
@@ -14,7 +15,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: LayoutProps<"/courses/[slug]">): Promise<Metadata> {
   const course = getCourseDetail((await params).slug);
-  if (!course) return {};
+  if (!course) return notFoundMetadata;
 
   return {
     title: { default: course.headline, template: "%s | ByteSpace" },
