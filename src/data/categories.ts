@@ -1,4 +1,14 @@
+import { images } from "@/constants/images";
 import type { CourseCategory } from "@/types/course";
+
+export const featuredCategories: (CourseCategory & { icon: string })[] = [
+  { slug: "design", label: "Design", icon: images.categories.design },
+  { slug: "development", label: "Development", icon: images.categories.development },
+  { slug: "it-software", label: "IT & Software", icon: images.categories.itSoftware },
+  { slug: "business", label: "Business", icon: images.categories.business },
+  { slug: "marketing", label: "Marketing", icon: images.categories.marketing },
+  { slug: "photography", label: "Photography", icon: images.categories.photography },
+];
 
 export const courseCategories: CourseCategory[] = [
   { slug: "music", label: "Music" },
