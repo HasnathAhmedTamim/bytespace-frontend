@@ -25,7 +25,7 @@ export function CoursesSearchBanner({ filters = {} }: CoursesSearchBannerProps) 
           className="mt-6 flex w-full max-w-[39rem] items-start gap-2.5 md:mt-8 md:gap-4"
         >
           {Object.entries(refinements).map(([name, value]) =>
-            value ? <input key={name} type="hidden" name={name} value={value} /> : null
+            value && name !== "page" ? <input key={name} type="hidden" name={name} value={value} /> : null
           )}
           <label htmlFor="courses-search" className="sr-only">
             Search courses

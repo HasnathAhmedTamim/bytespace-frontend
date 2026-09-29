@@ -32,6 +32,7 @@ type CourseCardProps = {
   tone?: "default" | "inverse";
   className?: string;
   imageSizes?: string;
+  imagePreload?: boolean;
 };
 
 export function CourseCard({
@@ -39,6 +40,7 @@ export function CourseCard({
   tone = "default",
   className,
   imageSizes = "(min-width: 1280px) 341px, (min-width: 768px) 45vw, 90vw",
+  imagePreload = false,
 }: CourseCardProps) {
   const meta = [`${course.lessons} Lessons`, course.duration, `${course.comments} Comments`];
   const isInverse = tone === "inverse";
@@ -58,6 +60,7 @@ export function CourseCard({
           alt=""
           fill
           sizes={imageSizes}
+          preload={imagePreload}
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <ul

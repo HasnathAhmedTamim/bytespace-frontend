@@ -1,6 +1,7 @@
 import { routes } from "@/constants/navigation";
 import { isSearchScope, type SearchScope } from "@/constants/search";
 import { courseCategories } from "@/data/categories";
+import type { Course } from "@/types/course";
 
 export type FilterOption = { value: string; label: string };
 
@@ -48,13 +49,20 @@ export type CourseFilters = {
   price?: OptionValue<typeof priceOptions>;
   rating?: OptionValue<typeof ratingOptions>;
   sort?: CourseSort;
+  page?: number;
 };
 
 export type FilterKey = keyof CourseFilters;
 
+type FilterPatch = Partial<Record<FilterKey, string | number | undefined>>;
+
 type SearchParams = Record<string, string | string[] | undefined>;
 
-const paramOrder: FilterKey[] = ["q", "scope", "category", "level", "price", "rating", "sort"];
+const paramOrder: FilterKey[] = ["q", "scope", "category", "level", "price", "rating", "sort", "page"];
+
+export const coursesPerPage = 18;
+
+export const courseResultsId = "course-results";
 
 function first(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
@@ -71,6 +79,7 @@ export function optionLabel(options: readonly FilterOption[], value: string | un
 export function parseCourseFilters(params: SearchParams): CourseFilters {
   const scope = first(params.scope);
   const sort = pick(sortOptions, first(params.sort));
+  const page = Number.parseInt(first(params.page) ?? "", 10);
 
   return {
     q: first(params.q)?.trim() || undefined,
@@ -80,18 +89,61 @@ export function parseCourseFilters(params: SearchParams): CourseFilters {
     price: pick(priceOptions, first(params.price)),
     rating: pick(ratingOptions, first(params.rating)),
     sort: sort === defaultSort ? undefined : sort,
+    page: page > 1 ? page : undefined,
   };
 }
 
-export function coursesHref(filters: CourseFilters, patch: Partial<Record<FilterKey, string | undefined>> = {}) {
-  const next: Partial<Record<FilterKey, string | undefined>> = { ...filters, ...patch };
+export function coursesHref(filters: CourseFilters, patch: FilterPatch = {}, hash?: string) {
+  const next: FilterPatch = { ...filters, page: undefined, ...patch };
   const params = new URLSearchParams();
 
   for (const key of paramOrder) {
     const value = next[key];
-    if (value && !(key === "sort" && value === defaultSort)) params.set(key, value);
+    if (!value || (key === "sort" && value === defaultSort) || (key === "page" && Number(value) <= 1)) continue;
+    params.set(key, String(value));
   }
 
   const query = params.toString();
-  return query ? `${routes.courses}?${query}` : routes.courses;
+  return `${routes.courses}${query ? `?${query}` : ""}${hash ? `#${hash}` : ""}`;
+}
+
+function matchesQuery(course: Course, filters: CourseFilters) {
+  if (!filters.q) return true;
+  const needle = filters.q.toLowerCase();
+  const haystack = filters.scope === "creators" ? course.creator.name : course.title;
+  return haystack.toLowerCase().includes(needle);
+}
+
+const sorters: Record<CourseSort, (a: Course, b: Course) => number> = {
+  relevant: (a, b) => Number(b.featured) - Number(a.featured),
+  rating: (a, b) => b.rating - a.rating,
+  popular: (a, b) => b.enrolled - a.enrolled,
+  "price-asc": (a, b) => a.price - b.price,
+  "price-desc": (a, b) => b.price - a.price,
+};
+
+export function queryCourses(courses: readonly Course[], filters: CourseFilters) {
+  const matches = courses
+    .filter(
+      (course) =>
+        matchesQuery(course, filters) &&
+        (!filters.category || course.categories.includes(filters.category)) &&
+        (!filters.level || course.level.toLowerCase() === filters.level) &&
+        (!filters.price || (filters.price === "free" ? course.price === 0 : course.price > 0)) &&
+        (!filters.rating || course.rating >= Number(filters.rating))
+    )
+    .sort(sorters[filters.sort ?? defaultSort]);
+
+  const total = matches.length;
+  const pageCount = Math.max(1, Math.ceil(total / coursesPerPage));
+  const page = Math.min(filters.page ?? 1, pageCount);
+  const start = (page - 1) * coursesPerPage;
+
+  return {
+    items: matches.slice(start, start + coursesPerPage),
+    total,
+    page,
+    pageCount,
+    start,
+  };
 }
