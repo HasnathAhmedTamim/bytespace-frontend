@@ -91,5 +91,6 @@ export const images = {
     cylinderLime: "/images/shapes/cylinder-lime.png",
     pyramidWhite: "/images/shapes/pyramid-white.png",
     torusWhite: "/images/shapes/torus-white.png",
+    torusLimeRing: "/images/shapes/torus-lime-ring.png",
   },
 } as const;
