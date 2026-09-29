@@ -44,6 +44,9 @@
   --color-secondary-900: #465a0d;
   --color-secondary-950: #243300;
 
+  /* Section headings */
+  --color-ink: #040819;
+
   --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-clash-display), var(--font-poppins), sans-serif;
@@ -117,18 +120,21 @@
   font-size: 4.5rem;
   line-height: 1.2;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 @utility heading-m {
   font-family: var(--font-heading);
   font-size: 2.75rem;
   line-height: 1.2;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 @utility heading-s {
   font-family: var(--font-heading);
   font-size: 2.25rem;
   line-height: 1.2;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 @utility heading-xs {
   font-family: var(--font-heading);

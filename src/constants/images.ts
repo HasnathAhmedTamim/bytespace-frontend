@@ -29,8 +29,12 @@ export const images = {
     "/images/partners/partner-1.png",
   ],
   courses: {
-    figma: "/images/courses/course-figma.png",
-    digitalAsset: "/images/courses/course-digital-asset.png",
+    figma: "/images/courses/course-figma.jpg",
+    digitalAsset: "/images/courses/course-digital-asset.jpg",
+    bigData: "/images/courses/course-big-data.jpg",
+    productivity: "/images/courses/course-productivity.jpg",
+    money: "/images/courses/course-money.jpg",
+    startup: "/images/courses/course-startup.jpg",
   },
   categories: {
     design: "/images/categories/design.png",

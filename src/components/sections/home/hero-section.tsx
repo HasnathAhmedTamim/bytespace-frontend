@@ -16,7 +16,7 @@ export function HeroSection() {
       <HeroShapes />
 
       <Container className="relative flex flex-col items-center pt-10 text-center md:pt-14 lg:pt-17">
-        <h1 className="max-w-4xl heading-s tracking-[-0.01em] text-white sm:heading-m lg:heading-l">
+        <h1 className="max-w-4xl heading-s text-white sm:heading-m lg:heading-l">
           Get Access to Hundreds Courses Available
         </h1>
         <p className="mt-4 max-w-[52rem] body-m text-white md:mt-8 md:body-l">
