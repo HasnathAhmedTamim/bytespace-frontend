@@ -1,7 +1,6 @@
 import { images } from "@/constants/images";
-import type { Course, Creator } from "@/types/course";
-
-export const purepearlStudio: Creator = { slug: "purepearl-studio", name: "purepearl studio" };
+import { purepearlStudio } from "@/data/creators";
+import type { Course } from "@/types/course";
 
 const defaults = {
   featured: true,
@@ -29,6 +28,11 @@ export const courses: Course[] = [
     title: "Build Digital Asset",
     image: images.courses.digitalAsset,
     categories: ["graphic-design", "digital-illustration"],
+    lessons: 112,
+    duration: "24 hours",
+    rating: 4.8,
+    level: "Intermediate",
+    enrolled: 199,
   },
   {
     ...defaults,

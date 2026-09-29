@@ -8,6 +8,10 @@ export type CourseCategory = {
 export type Creator = {
   slug: string;
   name: string;
+  displayName: string;
+  role: string;
+  avatar: string;
+  bio: string;
 };
 
 export type Course = {
@@ -24,4 +28,18 @@ export type Course = {
   price: number;
   enrolled: number;
   creator: Creator;
+};
+
+export type CourseLesson = {
+  title: string;
+  duration: string;
+};
+
+export type CourseDetail = Course & {
+  headline: string;
+  subtitle: string;
+  reviews: number;
+  preview: string;
+  lessonPreview: CourseLesson[];
+  pitch: string;
 };

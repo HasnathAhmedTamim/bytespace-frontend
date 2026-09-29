@@ -1,14 +1,7 @@
 import { images } from "@/constants/images";
-import { courses, purepearlStudio } from "@/data/courses";
-import type { Course, CourseLevel, Creator } from "@/types/course";
-
-const creators: Creator[] = [
-  purepearlStudio,
-  { slug: "northwind-academy", name: "northwind academy" },
-  { slug: "pixel-pine-studio", name: "pixel pine studio" },
-  { slug: "lumen-labs", name: "lumen labs" },
-  { slug: "bluebird-school", name: "bluebird school" },
-];
+import { courses } from "@/data/courses";
+import { creators } from "@/data/creators";
+import type { Course, CourseLevel } from "@/types/course";
 
 const categoryImages: Record<string, string[]> = {
   "ui-ux-design": [images.courses.figma, images.courses.digitalAsset],

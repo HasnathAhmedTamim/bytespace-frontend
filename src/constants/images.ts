@@ -44,6 +44,16 @@ export const images = {
     money: "/images/courses/course-money.jpg",
     startup: "/images/courses/course-startup.jpg",
   },
+  previews: {
+    digitalAsset: "/images/previews/build-digital-asset.jpg",
+  },
+  creators: {
+    purepearlStudio: "/images/creators/purepearl-studio.png",
+    northwindAcademy: "/images/creators/northwind-academy.png",
+    pixelPineStudio: "/images/creators/pixel-pine-studio.png",
+    lumenLabs: "/images/creators/lumen-labs.png",
+    bluebirdSchool: "/images/creators/bluebird-school.png",
+  },
   categories: {
     design: "/images/categories/design.png",
     development: "/images/categories/development.png",
