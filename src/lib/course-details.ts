@@ -31,6 +31,29 @@ function fallbackContent(course: Course, index: number) {
       "Common Mistakes and How to Avoid Them",
       "Final Project and Feedback",
     ],
+    modules: [
+      {
+        title: "Getting Started",
+        summary: `Meet your instructor, set up your tools and get a clear map of everything ${course.title} covers.`,
+      },
+      {
+        title: `${category} Fundamentals`,
+        summary: `Learn the core ideas behind ${category.toLowerCase()} through short lessons and quick practice tasks.`,
+      },
+      {
+        title: "Guided Practice",
+        summary: "Work through step-by-step exercises that build on each other and turn theory into habit.",
+      },
+      {
+        title: "Real-World Techniques",
+        summary: "Explore the workflows professionals rely on and learn how to avoid the most common mistakes.",
+      },
+      {
+        title: "Final Project",
+        summary: "Bring everything together in a hands-on project you can share, with a checklist to review your work.",
+      },
+    ],
+    progress: 0,
   };
 }
 

@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: LayoutProps<"/courses/[slug]"
   if (!course) return {};
 
   return {
-    title: course.headline,
+    title: { default: course.headline, template: "%s | ByteSpace" },
     description: `${course.subtitle}. ${course.lessons} lessons by ${course.creator.displayName}.`,
   };
 }

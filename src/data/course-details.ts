@@ -36,5 +36,38 @@ export const courseDetailContent: Record<string, CourseDetailContent> = {
       "Monetization Strategies",
       "Capstone Project: Building Your Portfolio",
     ],
+    modules: [
+      {
+        title: "Introduction to Digital Assets",
+        summary:
+          "Lay the groundwork with lessons like 'Understanding Digital Elements' and 'Navigating Design Software Tools.' Dive into the essentials of digital asset creation.",
+      },
+      {
+        title: "Design Principles for Impact",
+        summary:
+          "Master the principles that drive impactful designs with lessons such as 'Color Theory in Digital Design' and 'Typography Essentials.' Elevate your visual communication skills.",
+      },
+      {
+        title: "User-Centric Design Strategies",
+        summary:
+          "Understand 'Design Thinking in Digital Creation' and delve into 'User Experience (UX) Essentials.' Craft digital assets with a focus on user-centric design.",
+      },
+      {
+        title: "Interactive Media and Engagement",
+        summary:
+          "Engage your audience with lessons like 'Creating Interactive Presentations' and 'Integrating Multimedia Elements.' Master the art of creating immersive digital experiences.",
+      },
+      {
+        title: "Project Showcase and Critique",
+        summary:
+          "Perfect your presentation skills with 'Effective Presentation Techniques' and embrace collaboration with 'Peer Critique and Collaboration.' Showcase your work with confidence.",
+      },
+      {
+        title: "Optimizing Digital Assets for Various Platforms",
+        summary:
+          "Adapt your digital creations for 'Mobile Platforms' and optimize for 'Social Media.' Ensure widespread accessibility and engagement across diverse digital landscapes.",
+      },
+    ],
+    progress: 55,
   },
 };

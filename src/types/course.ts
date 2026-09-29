@@ -40,6 +40,11 @@ export type CourseImage = {
   alt: string;
 };
 
+export type CourseModule = {
+  title: string;
+  summary: string;
+};
+
 export type CourseDetail = Course & {
   headline: string;
   subtitle: string;
@@ -50,4 +55,7 @@ export type CourseDetail = Course & {
   description: string[];
   gallery: CourseImage[];
   keyPoints: string[];
+  modules: CourseModule[];
+  /** Learner progress through the course, 0–100. */
+  progress: number;
 };
