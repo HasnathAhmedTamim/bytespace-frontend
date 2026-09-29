@@ -1,4 +1,5 @@
 import { CategoriesSection } from "@/components/sections/home/categories-section";
+import { CreatorCtaSection } from "@/components/sections/home/creator-cta-section";
 import { DiscoverSection } from "@/components/sections/home/discover-section";
 import { GradientBackdrop } from "@/components/sections/home/gradient-backdrop";
 import { GrowthSection } from "@/components/sections/home/growth-section";
@@ -17,6 +18,7 @@ export default function HomePage() {
         <GrowthSection />
         <ManageCoursesSection />
       </GradientBackdrop>
+      <CreatorCtaSection />
     </>
   );
 }
