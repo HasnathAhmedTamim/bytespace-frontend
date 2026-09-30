@@ -16,11 +16,20 @@ type CourseResultsProps = {
   courses?: readonly Course[];
   /** Page the filters and pagination link to; defaults to the Courses page. */
   pathname?: string;
+  perPage?: number;
   className?: string;
+  gridClassName?: string;
 };
 
-export function CourseResults({ filters, courses = catalogue, pathname = routes.courses, className }: CourseResultsProps) {
-  const { items, total, page, pageCount, start } = queryCourses(courses, filters);
+export function CourseResults({
+  filters,
+  courses = catalogue,
+  pathname = routes.courses,
+  perPage,
+  className,
+  gridClassName,
+}: CourseResultsProps) {
+  const { items, total, page, pageCount, start } = queryCourses(courses, filters, perPage);
 
   return (
     <Section
@@ -38,7 +47,7 @@ export function CourseResults({ filters, courses = catalogue, pathname = routes.
         </p>
 
         {items.length > 0 ? (
-          <ul className="grid gap-5 md:grid-cols-2 md:gap-4 lg:gap-6 xl:grid-cols-3 xl:gap-10 3xl:pl-px">
+          <ul className={cn("grid gap-5 md:grid-cols-2 md:gap-4 lg:gap-6 xl:grid-cols-3 xl:gap-10 3xl:pl-px", gridClassName)}>
             {items.map((course, index) => (
               <li key={course.slug} className="flex min-w-0">
                 <CourseCard course={course} className="w-full" imagePreload={index < 3} />

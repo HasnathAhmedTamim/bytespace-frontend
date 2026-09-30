@@ -26,7 +26,7 @@ export function CreatorStats({ name, products, followers, className }: CreatorSt
         {stats.map((stat) => (
           <li
             key={stat.label}
-            className="flex h-11 items-center gap-2 rounded-full bg-white px-5 label-l text-neutral-950 md:px-6"
+            className="flex h-11 items-center gap-2 rounded-full bg-white px-5 label-l text-neutral-950 md:h-11.5 md:px-6"
           >
             <span className="text-primary-800">{stat.value}</span> {stat.label}
           </li>
@@ -36,7 +36,7 @@ export function CreatorStats({ name, products, followers, className }: CreatorSt
         type="button"
         aria-pressed={following}
         onClick={() => setFollowing((value) => !value)}
-        className={cn("px-6.75 label-l", following && "bg-white hover:bg-neutral-50 hover:shadow-none")}
+        className={cn("px-6 md:h-11.5 md:text-lg md:leading-5.5", following && "bg-white hover:bg-neutral-50 hover:shadow-none")}
       >
         {following && <Check aria-hidden="true" className="size-5" />}
         {following ? "Following" : "Follow"}
