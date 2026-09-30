@@ -18,8 +18,8 @@ export function CoursesSearchBanner({ filters = {} }: CoursesSearchBannerProps) 
     <Section
       tone="brand"
       clearHeader
-      className="@container bg-position-[calc(50%+60px*var(--grid-zoom,1))_calc(-2px*var(--grid-zoom,1))] 3xl:pt-0 3xl:grid-zoom-full"
-      containerClassName="flex flex-col items-center pt-10 pb-12 text-center md:pt-11 md:pb-17.25 3xl:pt-41 3xl:frame-zoom-full"
+      className="bg-position-[calc(50%+60px)_-2px]"
+      containerClassName="flex flex-col items-center pt-10 pb-12 text-center md:pt-11 md:pb-17.25"
     >
       <h1 className="heading-s text-balance text-neutral-50 lg:leading-10.75">Find Your Next Course</h1>
 

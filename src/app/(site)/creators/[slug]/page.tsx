@@ -37,8 +37,8 @@ export default async function CreatorPage({ params, searchParams }: PageProps<"/
   return (
     <>
       <CreatorHero creator={creator} products={courses.length} />
-      <Section aria-label="Course filters" containerClassName="@container">
-        <div className="pt-10 md:pt-12 xl:pt-15.5 3xl:frame-zoom">
+      <Section aria-label="Course filters">
+        <div className="pt-10 md:pt-12 xl:pt-15.5">
           <CoursesToolbar filters={filters} pathname={pathname} categories={categories} />
         </div>
       </Section>

@@ -15,11 +15,11 @@ export function HeroSection() {
     <Section
       tone="brand"
       clearHeader
-      className="@container relative isolate overflow-hidden 3xl:pt-0 3xl:grid-zoom-full"
+      className="relative isolate overflow-hidden"
       background={<HeroShapes />}
-      containerClassName="relative flex flex-col items-center pt-10 text-center md:pt-9 lg:pt-12.25 3xl:pt-42.25 3xl:frame-zoom-full"
+      containerClassName="relative flex flex-col items-center pt-10 text-center md:pt-9 lg:pt-12.25"
       bleed={
-        <div className="relative h-[calc(510px*var(--stage-scale))] [--stage-scale:0.5] sm:[--stage-scale:0.6] md:[--stage-scale:0.75] lg:[--stage-scale:0.9] xl:[--stage-scale:1] 3xl:frame-zoom-full">
+        <div className="relative h-[calc(510px*var(--stage-scale))] [--stage-scale:0.5] sm:[--stage-scale:0.6] md:[--stage-scale:0.75] lg:[--stage-scale:0.9] xl:[--stage-scale:1]">
           <div className="absolute top-0 left-1/2 h-[510px] w-360 -translate-x-1/2 origin-top scale-(--stage-scale)">
             <div
               aria-hidden="true"

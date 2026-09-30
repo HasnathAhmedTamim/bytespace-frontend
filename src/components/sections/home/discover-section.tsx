@@ -5,8 +5,8 @@ import { courses } from "@/data/courses";
 
 export function DiscoverSection() {
   return (
-    <Section aria-labelledby="discover-heading" containerClassName="@container">
-      <div className="pt-12 md:pt-18 3xl:frame-zoom">
+    <Section aria-labelledby="discover-heading">
+      <div className="pt-12 md:pt-18">
         <SectionHeading
           id="discover-heading"
           className="md:gap-4"

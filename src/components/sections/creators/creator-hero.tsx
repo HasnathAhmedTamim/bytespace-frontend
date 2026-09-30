@@ -16,9 +16,8 @@ export function CreatorHero({ creator, products }: CreatorHeroProps) {
       tone="brand"
       clearHeader
       className="bg-position-[calc(50%+60px)_-2px] text-neutral-50"
-      containerClassName="@container"
     >
-      <div className="pt-8 pb-12 md:pt-7 md:pb-16 xl:pt-13 xl:pb-20.5 3xl:frame-zoom">
+      <div className="pt-8 pb-12 md:pt-7 md:pb-16 xl:pt-13 xl:pb-20.5">
         <div className="flex items-center gap-4 md:gap-6 3xl:ml-0.5">
           <Image
             src={creator.portrait ?? creator.avatar}

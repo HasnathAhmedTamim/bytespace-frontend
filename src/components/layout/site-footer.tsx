@@ -12,8 +12,8 @@ const linkClass =
 export function SiteFooter() {
   return (
     <footer className="border-t border-neutral-200 bg-white">
-      <Container className="@container">
-        <div className="flex flex-col gap-16 pt-14 pb-10 lg:gap-32.5 lg:pt-17.5 lg:pb-12 3xl:frame-zoom">
+      <Container>
+        <div className="flex flex-col gap-16 pt-14 pb-10 lg:gap-32.5 lg:pt-17.5 lg:pb-12">
           <div className="flex flex-col gap-12 xl:flex-row xl:items-start xl:gap-10 3xl:gap-23">
             <div className="flex flex-col gap-10 lg:gap-11.25 xl:w-120 xl:shrink-0 3xl:w-132">
               <div className="flex flex-col gap-4">

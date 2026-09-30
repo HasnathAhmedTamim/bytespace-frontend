@@ -47,7 +47,7 @@ export function CourseHero({ course, className }: CourseHeroProps) {
           ))}
         </ul>
       </div>
-      <ShareButton title={course.title} className="3xl:-mr-[calc(5.3125rem/tan(atan2(100cqw,75rem)))]" />
+      <ShareButton title={course.title} className="3xl:-mr-21.25" />
     </div>
   );
 }

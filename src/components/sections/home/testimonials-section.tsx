@@ -8,16 +8,15 @@ export function TestimonialsSection() {
       aria-labelledby="testimonials-heading"
       tone="subtle"
       className="relative isolate overflow-hidden"
-      containerClassName="@container"
       background={
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 3xl:frame-zoom-viewport">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 inset-x-[max(0px,calc(50%-45rem))] -z-10">
           <div className="absolute -top-[241px] -right-[539px] size-[1137px] bg-orb blur-[20px] [--glow:rgb(203_252_1/0.4)]" />
           <div className="absolute -top-[138px] left-[calc(50%-325px)] size-[672px] bg-orb blur-[20px] [--glow:rgb(203_252_1/0.6)]" />
           <div className="absolute top-[149px] -left-[442px] size-[1137px] bg-orb blur-[20px] [--glow:rgb(0_59_226/0.24)]" />
         </div>
       }
     >
-      <div className="pt-16 pb-14.25 md:pt-18.5 3xl:frame-zoom">
+      <div className="pt-16 pb-14.25 md:pt-18.5">
         <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:gap-10 3xl:-ml-0.5 3xl:gap-10.75">
           <h2
             id="testimonials-heading"

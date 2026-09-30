@@ -28,12 +28,12 @@ export default async function CourseLayout({ params, children }: LayoutProps<"/c
   if (!course) notFound();
 
   return (
-    <div className="isolate overflow-x-clip pt-(--header-height) 3xl:pt-0">
-      <Container className="@container">
-        <div className="grid grid-cols-1 pb-16 md:pb-17 lg:grid-cols-[minmax(0,1fr)_22.5rem] lg:grid-rows-[auto_auto_1fr] lg:gap-x-10 xl:grid-cols-[minmax(0,1fr)_25.75rem] xl:gap-x-16 xl:pb-16 3xl:gap-x-15.75 3xl:pt-30 3xl:frame-zoom">
+    <div className="isolate overflow-x-clip pt-(--header-height)">
+      <Container>
+        <div className="grid grid-cols-1 pb-16 md:pb-17 lg:grid-cols-[minmax(0,1fr)_22.5rem] lg:grid-rows-[auto_auto_1fr] lg:gap-x-10 xl:grid-cols-[minmax(0,1fr)_25.75rem] xl:gap-x-16 xl:pb-16 3xl:gap-x-15.75">
           <div
             aria-hidden="true"
-            className="-z-10 col-span-full row-span-2 row-start-1 -mx-[100vmax] -mt-(--header-height) -mb-10 bg-primary-800 bg-grid bg-position-[calc(50%+60px)_-2px] lg:-mb-15.5 3xl:-mt-30"
+            className="-z-10 col-span-full row-span-2 row-start-1 -mx-[100vmax] -mt-(--header-height) -mb-10 bg-primary-800 bg-grid bg-position-[calc(50%+60px)_-2px] lg:-mb-15.5"
           />
           <CourseHero course={course} className="col-span-full row-start-1 pt-8 pb-8 md:pt-7 md:pb-10 xl:pt-13 xl:pb-14.75" />
           <CoursePreview course={course} className="col-start-1 row-start-2 3xl:ml-1.25" />
