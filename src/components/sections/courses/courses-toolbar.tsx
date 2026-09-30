@@ -2,10 +2,9 @@
 
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Funnel, Shapes } from "lucide-react";
 
 import { FilterMenu } from "@/components/courses/filter-menu";
-import { LevelIcon, SortIcon } from "@/components/courses/filter-icons";
+import { CategoryIcon, FunnelIcon, LevelIcon, SortIcon } from "@/components/courses/filter-icons";
 import {
   categoryOptions,
   coursesHref,
@@ -34,14 +33,10 @@ export function CoursesToolbar({ filters }: { filters: CourseFilters }) {
       aria-busy={isPending}
       className="flex flex-wrap items-center justify-between gap-2 md:gap-4"
     >
-      <div role="group" aria-label="Filter courses" className="flex flex-wrap gap-2 md:gap-4">
+      <div role="group" aria-label="Filter courses" className="flex flex-wrap gap-2 md:gap-4 3xl:-ml-px">
         <FilterMenu
           label="Filter"
-          icon={
-            <span className="grid size-6 shrink-0 place-items-center">
-              <Funnel aria-hidden="true" strokeWidth={2.5} className="size-4.5" />
-            </span>
-          }
+          icon={<FunnelIcon />}
           active={extraFilterCount > 0}
           badge={extraFilterCount}
           groups={[
@@ -59,7 +54,7 @@ export function CoursesToolbar({ filters }: { filters: CourseFilters }) {
         />
         <FilterMenu
           label={optionLabel(categoryOptions, filters.category) ?? "Category"}
-          icon={<Shapes aria-hidden="true" />}
+          icon={<CategoryIcon />}
           active={Boolean(filters.category)}
           groups={[{ key: "category", options: categoryOptions, value: filters.category, allLabel: "All categories" }]}
           contentClassName="max-h-(--radix-dropdown-menu-content-available-height) md:max-h-96"

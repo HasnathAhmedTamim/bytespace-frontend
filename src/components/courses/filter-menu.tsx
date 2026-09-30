@@ -46,7 +46,7 @@ export function FilterMenu({
       <DropdownMenu.Trigger
         aria-label={badge ? `${label}, ${badge} active` : undefined}
         className={cn(
-          "inline-flex h-12 shrink-0 items-center gap-1 rounded-full border bg-white px-3.75 label-m whitespace-nowrap text-neutral-950 transition-colors outline-none hover:border-neutral-400 focus-visible:ring-3 focus-visible:ring-primary-800/30 data-[state=open]:border-neutral-400 [&>svg]:size-6 [&>svg]:shrink-0",
+          "inline-flex h-12 shrink-0 items-center gap-1 rounded-full border bg-white px-3.75 label-m whitespace-nowrap text-neutral-700 transition-colors outline-none hover:border-neutral-400 hover:text-neutral-950 focus-visible:ring-3 focus-visible:ring-primary-800/30 data-[state=open]:border-neutral-400 [&>svg]:size-6 [&>svg]:shrink-0 [&>svg]:text-neutral-950",
           active ? "border-primary-800 bg-primary-800/5" : "border-neutral-200"
         )}
       >
