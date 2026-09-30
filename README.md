@@ -1,88 +1,194 @@
-# ByteSpace Frontend
+# ByteSpace — Online Learning Platform
 
-A responsive online-learning platform UI built from the ByteSpace Figma design as a frontend assessment. It covers the landing page plus the course catalogue, course details, creator profile, authentication and 404 pages.
+A responsive, pixel-faithful implementation of the **ByteSpace** Figma design: a marketplace where learners discover courses and creators publish them. It was built as a frontend assessment with Next.js, TypeScript and Tailwind CSS.
 
-**Live site:** _add Vercel URL here_
+**Live demo:** [bytespace-frontend-eight.vercel.app](https://bytespace-frontend-eight.vercel.app)
+
+---
+
+## Table of contents
+
+- [About the project](#about-the-project)
+- [Features](#features)
+- [Tech stack](#tech-stack)
+- [Getting started](#getting-started)
+- [Folder structure](#folder-structure)
+- [Architecture and design system](#architecture-and-design-system)
+- [Responsive design](#responsive-design)
+- [Accessibility](#accessibility)
+- [Git workflow](#git-workflow)
+- [Deployment](#deployment)
+
+---
+
+## About the project
+
+ByteSpace is an online course platform UI. The goal was to turn the Figma design into a production-quality frontend that:
+
+- matches the design closely at the 1440px reference width;
+- keeps the same scale on large monitors (1920px, 2560px) instead of stretching;
+- adapts cleanly to laptops, tablets and phones down to 390px;
+- is built from small, reusable and fully typed components.
+
+All course, creator, category and testimonial content comes from typed mock data, so the app runs without a backend, database or environment variables.
+
+## Features
+
+### Landing page (`/`)
+- Hero with a course search that opens the catalogue with the query applied, plus floating stat cards and decorative 3D shapes.
+- Partner logos strip.
+- "Discover your passion" course explorer: category chips filter the course grid instantly, with an empty state for categories without courses.
+- Category cards, a growth section with platform stats, and a "Create & manage courses" section for creators.
+- Creator call to action and a testimonials section.
+- Footer with newsletter sign-up (validated with React Hook Form + Zod) and link groups.
+
+### Course catalogue (`/courses`)
+- Search by course title or by creator, with a scope selector.
+- Filters for category, level, price (free/paid) and minimum rating.
+- Sorting by relevance, rating, popularity and price.
+- Pagination (18 courses per page).
+- Every filter lives in the URL, so results are shareable and work with the browser back button.
+
+### Course details (`/courses/[slug]`)
+- Course hero with creator, rating and enrolment card.
+- Tabbed sub-pages: **About** (description, preview, key points), **Lessons** (modules, lesson list, progress) and **Reviews** (rating summary and learner reviews).
+- Share button using the Web Share API, falling back to copying the link.
+- Pages are statically generated for every course, with per-page metadata.
+
+### Creator profile (`/creators/[slug]`)
+- Creator hero with bio and stats (products, followers).
+- The creator's courses with the same filter and sort toolbar as the catalogue.
+
+### Authentication (`/sign-in`, `/sign-up`)
+- Split layout with a showcase panel.
+- Client-side validation with inline, accessible error messages and focus on the first invalid field.
+- Loading state and success toast (UI only; there is no real auth backend).
+- Social sign-in buttons.
+
+### Global
+- Fixed header that gains a solid background on scroll, and a slide-out mobile navigation drawer.
+- Toast notifications for placeholder actions (cart, video preview, social sign-in).
+- Custom 404 page for unknown routes and unknown course or creator slugs.
+- SEO metadata for every page.
 
 ## Tech stack
 
-- [Next.js 16](https://nextjs.org) (App Router) with React 19 and TypeScript
-- [Tailwind CSS v4](https://tailwindcss.com) with design tokens in `src/app/globals.css`
-- shadcn/ui primitives on Radix UI, `class-variance-authority`, `tailwind-merge`
-- Typed client-side validation for sign-in and sign-up, React Hook Form + Zod for the newsletter form
-- Motion for small interactions, Sonner for toasts, Lucide icons
-- Clash Display and Satoshi (self-hosted via `next/font/local`) and Poppins (`next/font/google`)
-
-## Pages
-
-| Route | Page |
+| Area | Technology |
 | --- | --- |
-| `/` | Landing page: hero, partners, discover, categories, courses, growth, testimonials, creator CTA |
-| `/courses` | Course catalogue with search, filters, sorting and pagination |
-| `/courses/[slug]` | Course details: overview |
-| `/courses/[slug]/lessons` | Course details: lesson list |
-| `/courses/[slug]/reviews` | Course details: reviews |
-| `/creators/[slug]` | Creator profile |
-| `/sign-in`, `/sign-up` | Authentication with client-side validation |
-| any unknown URL | Custom 404 page |
-
-Course and creator content comes from typed mock data in `src/data`, so the app needs no backend or environment variables.
+| Framework | [Next.js 16](https://nextjs.org) (App Router, Server Components, static generation) |
+| Language | [TypeScript](https://www.typescriptlang.org) (strict) |
+| UI library | [React 19](https://react.dev) |
+| Styling | [Tailwind CSS v4](https://tailwindcss.com) with design tokens in CSS |
+| Components | [shadcn/ui](https://ui.shadcn.com) on [Radix UI](https://www.radix-ui.com), `class-variance-authority`, `tailwind-merge`, `clsx` |
+| Forms | [React Hook Form](https://react-hook-form.com) + [Zod](https://zod.dev) (newsletter), typed custom validators (auth) |
+| Feedback | [Sonner](https://sonner.emilkowal.ski) toasts |
+| Icons | [Lucide](https://lucide.dev) and custom SVG icons |
+| Fonts | Clash Display and Satoshi (self-hosted with `next/font/local`), Poppins (`next/font/google`) |
+| Tooling | ESLint (`eslint-config-next`), PostCSS |
+| Hosting | [Vercel](https://vercel.com) |
 
 ## Getting started
 
-Requires Node.js 20 or newer.
+### Prerequisites
+
+- Node.js 20 or newer
+- npm
+
+### Installation
 
 ```bash
+git clone https://github.com/HasnathAhmedTamim/bytespace-frontend.git
+cd bytespace-frontend
 npm install
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
 
-| Script | Purpose |
+### Scripts
+
+| Command | Description |
 | --- | --- |
 | `npm run dev` | Start the development server |
-| `npm run build` | Create a production build |
+| `npm run build` | Create an optimised production build |
 | `npm run start` | Serve the production build |
 | `npm run lint` | Run ESLint |
+| `npx tsc --noEmit` | Type-check the project |
 
-Type-check with `npx tsc --noEmit`.
-
-## Project structure
+## Folder structure
 
 ```text
-src/
-  app/
-    (site)/          # pages with the shared header and footer
-    (auth)/          # sign-in and sign-up
-    globals.css      # tokens: colours, radius, shadows, breakpoints, container
-  components/
-    ui/              # base primitives (Button, Input, Badge, Card, Sheet…)
-    shared/          # Container, Section, SectionHeading, Logo, Pagination…
-    layout/          # site header, footer, mobile menu, newsletter
-    sections/        # page sections grouped by page
-    auth/ courses/ creators/
-  constants/         # image paths, navigation, metadata
-  data/              # mock courses, creators, categories, testimonials
-  lib/               # validation, filtering, formatting, helpers
-  hooks/
-public/assets/       # exported Figma images and decorative shapes
+bytespace-frontend/
+├── public/
+│   └── assets/                  # Images, avatars, logos and decorative shapes exported from Figma
+├── src/
+│   ├── app/                     # Next.js App Router
+│   │   ├── (site)/              # Pages that share the header and footer
+│   │   │   ├── page.tsx         # Landing page
+│   │   │   ├── courses/         # Catalogue and course details (about / lessons / reviews)
+│   │   │   ├── creators/        # Creator profile
+│   │   │   └── not-found.tsx
+│   │   ├── (auth)/              # Sign in and sign up
+│   │   ├── layout.tsx           # Root layout: fonts, metadata, toaster
+│   │   ├── not-found.tsx        # Global 404
+│   │   └── globals.css          # Design tokens, typography and utilities
+│   ├── components/
+│   │   ├── ui/                  # Base primitives: Button, Input, Label, Badge, Card, Sheet, Toaster
+│   │   ├── shared/              # Reusable blocks: Container, Section, SectionHeading, Logo, Pagination…
+│   │   ├── layout/              # Site header, mobile nav, footer, newsletter, site shell
+│   │   ├── sections/            # Page sections grouped by page
+│   │   │   ├── home/
+│   │   │   ├── courses/
+│   │   │   ├── course-details/
+│   │   │   ├── creators/
+│   │   │   └── not-found/
+│   │   ├── courses/             # Course card, tabs, filters, rating, share and preview buttons
+│   │   ├── creators/            # Creator stats
+│   │   └── auth/                # Auth layout, forms and social sign-in
+│   ├── constants/               # Image paths, routes and navigation, metadata, search options
+│   ├── data/                    # Typed mock data: courses, creators, categories, testimonials
+│   ├── fonts/                   # Self-hosted variable fonts
+│   ├── hooks/                   # Custom hooks (useScrolled)
+│   ├── lib/                     # Filtering, validation, formatting and utilities
+│   └── types/                   # Shared TypeScript types
+├── components.json              # shadcn/ui configuration
+├── next.config.ts
+├── tsconfig.json
+└── package.json
 ```
 
-## Responsive approach
+## Architecture and design system
 
-- The 1440px Figma frame is the reference viewport and 390px is the mobile reference.
-- Backgrounds, colour bands and grids are always full width.
-- Content sits in a shared container: a fluid side gutter (24px on mobile rising to 120px at 1440px) and a 1200px content width that stays centred on wider screens, so layouts keep the Figma scale at 1920px and beyond.
-- Decorative shapes are anchored to the composition they belong to and hide or scale down on smaller screens.
-- Grids go from 3 columns on desktop to 2 on tablet and 1 on mobile; nothing scrolls horizontally from 390px to 2560px.
+- **Server-first:** pages are React Server Components; only interactive pieces (forms, the course explorer, the mobile menu, toasts) are client components.
+- **Design tokens:** colours, radii, shadows, breakpoints, typography, container width and gutters are defined once in `globals.css` and used through Tailwind utilities; components contain no hard-coded hex values.
+- **Reusable primitives:** `Section` (full-width section with tones such as `brand`, `muted` and `subtle`), `Container`, `SectionHeading`, `Button`, `Card` and `Badge` variants built with `class-variance-authority`.
+- **Typed data layer:** mock data in `src/data`, shared types in `src/types`, and pure helpers in `src/lib` (for example `queryCourses` for search, filter, sort and pagination).
+- **URL as state:** catalogue filters are parsed from and written to search params, which keeps pages server-rendered and shareable.
+
+## Responsive design
+
+- **1440px** is the Figma reference, and the layout matches it closely.
+- **Wider screens (1920px, 2560px):** backgrounds stay full width while content stays in a centred 1200px container, so the design keeps its scale instead of stretching or zooming.
+- **Smaller screens:** the side gutter shrinks from 120px to 24px, grids go from 3 columns to 2 and then 1, rows stack, and decorative shapes scale down or hide.
+- No CSS zoom or scaling of real content, and no horizontal scrolling from 390px to 2560px.
+
+## Accessibility
+
+- Semantic landmarks and headings, labelled navigation and form controls.
+- Visible focus rings and keyboard-operable menus, chips and tabs.
+- Form errors linked with `aria-describedby` and `aria-invalid`; live regions for filtered results.
+- Decorative images are hidden from assistive technology, and motion respects `prefers-reduced-motion`.
 
 ## Git workflow
 
-Each feature was built on its own branch and merged into `main` through a pull request with a merge commit:
-project setup, design system, layout, home, courses, course details, creator profile, auth, 404 and a responsive container refactor.
-Commits follow the `type(scope): description` convention.
+- Each feature was developed on its own branch and merged into `main` through a pull request with a merge commit: project setup, design system, layout, home, courses, course details, creator profile, auth, 404 and a responsive container refactor.
+- Commits follow the `type(scope): description` convention (for example `feat(courses): build course discovery section`).
+- Lint, type-check and a production build were run before every commit.
 
 ## Deployment
 
-Deployed on [Vercel](https://vercel.com) from the `main` branch with the default Next.js settings.
+The app is deployed on Vercel from the `main` branch with the default Next.js settings. No environment variables are required.
+
+---
+
+**Author:** [Hasnath Ahmed Tamim](https://github.com/HasnathAhmedTamim)
