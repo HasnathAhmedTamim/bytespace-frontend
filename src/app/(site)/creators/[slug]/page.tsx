@@ -5,6 +5,7 @@ import { Section } from "@/components/shared/section";
 import { CourseResults } from "@/components/sections/courses/course-results";
 import { CoursesToolbar } from "@/components/sections/courses/courses-toolbar";
 import { CreatorHero } from "@/components/sections/creators/creator-hero";
+import { notFoundMetadata } from "@/constants/metadata";
 import { routes } from "@/constants/navigation";
 import { catalogue } from "@/data/catalogue";
 import { getCreator } from "@/data/creators";
@@ -14,7 +15,7 @@ const creatorCoursesShown = 6;
 
 export async function generateMetadata({ params }: PageProps<"/creators/[slug]">): Promise<Metadata> {
   const creator = getCreator((await params).slug);
-  if (!creator) return {};
+  if (!creator) return notFoundMetadata;
 
   return {
     title: creator.displayName,

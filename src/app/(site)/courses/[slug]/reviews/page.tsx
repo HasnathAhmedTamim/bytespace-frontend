@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { CourseReviews } from "@/components/sections/course-details/course-reviews";
+import { notFoundMetadata } from "@/constants/metadata";
 import { getCourseDetail } from "@/lib/course-details";
 
 export const revalidate = 86400;
 
 export async function generateMetadata({ params }: PageProps<"/courses/[slug]/reviews">): Promise<Metadata> {
   const course = getCourseDetail((await params).slug);
-  if (!course) return {};
+  if (!course) return notFoundMetadata;
 
   return {
     title: `Reviews · ${course.headline}`,
