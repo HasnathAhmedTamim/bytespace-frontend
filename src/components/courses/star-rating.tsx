@@ -25,7 +25,7 @@ export function StarRating({ rating, label, className, starClassName }: StarRati
           strokeWidth={0}
           className={cn(
             "shrink-0 fill-current",
-            index < Math.round(rating) ? "text-neutral-900" : "text-neutral-200",
+            index < Math.round(rating) ? "text-neutral-700" : "text-neutral-200",
             starClassName
           )}
         />
