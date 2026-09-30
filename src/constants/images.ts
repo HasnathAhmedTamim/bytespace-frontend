@@ -1,0 +1,52 @@
+export const images = {
+  hero: {
+    student: "/images/hero/hero-student.png",
+  },
+  people: {
+    studentLaptop: "/images/people/student-laptop.png",
+    studentTablet: "/images/people/student-tablet.png",
+  },
+  testimonials: {
+    sarah: "/images/testimonials/sarah.png",
+    james: "/images/testimonials/james.png",
+    alex: "/images/testimonials/alex.png",
+  },
+  avatars: [
+    "/images/avatars/avatar-1.png",
+    "/images/avatars/avatar-2.png",
+    "/images/avatars/avatar-3.png",
+    "/images/avatars/avatar-4.png",
+    "/images/avatars/avatar-5.png",
+    "/images/avatars/avatar-6.png",
+    "/images/avatars/avatar-7.png",
+    "/images/avatars/avatar-8.png",
+  ],
+  partners: [
+    "/images/partners/partner-1.png",
+    "/images/partners/partner-2.png",
+    "/images/partners/partner-3.png",
+    "/images/partners/partner-4.png",
+    "/images/partners/partner-5.png",
+  ],
+  courses: {
+    figma: "/images/courses/course-figma.png",
+    digitalAsset: "/images/courses/course-digital-asset.png",
+  },
+  categories: {
+    design: "/images/categories/design.png",
+    development: "/images/categories/development.png",
+    itSoftware: "/images/categories/it-software.png",
+    business: "/images/categories/business.png",
+    marketing: "/images/categories/marketing.png",
+    photography: "/images/categories/photography.png",
+  },
+  shapes: {
+    cylinderWhite: "/images/shapes/cylinder-white.png",
+    torusLime: "/images/shapes/torus-lime.png",
+    pyramidLime: "/images/shapes/pyramid-lime.png",
+    coneWhite: "/images/shapes/cone-white.png",
+    springLime: "/images/shapes/spring-lime.png",
+    springWhite: "/images/shapes/spring-white.png",
+    springLimeFlat: "/images/shapes/spring-lime-flat.png",
+  },
+} as const;
