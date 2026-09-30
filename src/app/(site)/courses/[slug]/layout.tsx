@@ -33,7 +33,7 @@ export default async function CourseLayout({ params, children }: LayoutProps<"/c
           aria-hidden="true"
           className="-z-10 col-span-full row-span-2 row-start-1 -mx-[100vmax] -mt-(--header-height) -mb-10 bg-primary-800 bg-grid bg-position-[calc(50%+60px)_-2px] lg:-mb-15.5"
         />
-        <CourseHero course={course} className="col-span-full row-start-1 pt-8 pb-8 md:pt-12 md:pb-10 xl:pt-18 xl:pb-14.5" />
+        <CourseHero course={course} className="col-span-full row-start-1 pt-8 pb-8 md:pt-7 md:pb-10 xl:pt-13 xl:pb-14.5" />
         <CoursePreview course={course} className="col-start-1 row-start-2" />
         <CourseEnrollCard
           course={course}

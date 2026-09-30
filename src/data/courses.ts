@@ -28,11 +28,6 @@ export const courses: Course[] = [
     title: "Build Digital Asset",
     image: images.courses.digitalAsset,
     categories: ["graphic-design", "digital-illustration"],
-    lessons: 112,
-    duration: "24 hours",
-    rating: 4.8,
-    level: "Intermediate",
-    enrolled: 199,
   },
   {
     ...defaults,
