@@ -15,7 +15,7 @@ export function CourseResults({ filters }: { filters: CourseFilters }) {
     <Section
       id={courseResultsId}
       aria-labelledby="course-results-heading"
-      className="scroll-mt-(--header-height) pt-10 pb-16 md:pt-12 md:pb-20 xl:pt-19 xl:pb-18"
+      className="scroll-mt-(--header-height) pt-10 pb-16 md:pt-12 md:pb-20 xl:pt-19 xl:pb-18 3xl:pt-19.25"
     >
         <h2 id="course-results-heading" className="sr-only">
           Courses
@@ -27,7 +27,7 @@ export function CourseResults({ filters }: { filters: CourseFilters }) {
         </p>
 
         {items.length > 0 ? (
-          <ul className="grid gap-5 md:grid-cols-2 md:gap-4 lg:gap-6 xl:grid-cols-3 xl:gap-10">
+          <ul className="grid gap-5 md:grid-cols-2 md:gap-4 lg:gap-6 xl:grid-cols-3 xl:gap-10 3xl:pl-px">
             {items.map((course, index) => (
               <li key={course.slug} className="flex min-w-0">
                 <CourseCard course={course} className="w-full" imagePreload={index < 3} />
