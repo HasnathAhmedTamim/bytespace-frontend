@@ -33,8 +33,8 @@ export function ShareButton({ title, className }: ShareButtonProps) {
   }
 
   return (
-    <Button type="button" onClick={share} className={cn("h-10 gap-3 px-6 label-m", className)}>
-      <Share2 aria-hidden="true" className="size-5" />
+    <Button type="button" onClick={share} className={cn("h-10 gap-2 px-6 label-m leading-6", className)}>
+      <Share2 aria-hidden="true" className="size-6" />
       Share
     </Button>
   );

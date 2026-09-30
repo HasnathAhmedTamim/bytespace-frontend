@@ -11,16 +11,19 @@ type CoursePreviewProps = {
 
 export function CoursePreview({ course, className }: CoursePreviewProps) {
   return (
-    <div className={cn("relative aspect-3/2 overflow-hidden rounded-2xl bg-neutral-100", className)}>
+    <div className={cn("relative aspect-720/479 overflow-hidden rounded-3xl bg-neutral-100", className)}>
       <Image
         src={course.preview}
         alt=""
         fill
         preload
-        sizes="(min-width: 1280px) 724px, (min-width: 1024px) 55vw, 100vw"
+        sizes="(min-width: 1440px) 55vw, (min-width: 1280px) 720px, (min-width: 1024px) 55vw, 100vw"
         className="object-cover"
       />
-      <PreviewPlayButton title={course.title} className="absolute top-1/2 left-1/2 -translate-1/2" />
+      <PreviewPlayButton
+        title={course.title}
+        className="absolute top-1/2 left-1/2 -translate-1/2 lg:top-[53.44%] lg:left-[52.22%]"
+      />
     </div>
   );
 }

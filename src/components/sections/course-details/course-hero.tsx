@@ -21,10 +21,12 @@ export function CourseHero({ course, className }: CourseHeroProps) {
 
   return (
     <div className={cn("flex flex-col items-start gap-6 lg:flex-row lg:justify-between lg:gap-10", className)}>
-      <div className="min-w-0">
-        <h1 className="heading-s text-balance text-white max-md:text-[1.75rem]">{course.headline}</h1>
-        <p className="mt-2 heading-xs text-white max-md:text-base">{course.subtitle}</p>
-        <p className="mt-6.25 label-l text-white max-md:text-base">
+      <div className="min-w-0 3xl:ml-0.5">
+        <h1 className="heading-s text-balance text-neutral-50 max-md:text-[1.75rem] md:leading-10.75">
+          {course.headline}
+        </h1>
+        <p className="mt-2 heading-xs text-neutral-50 max-md:text-base">{course.subtitle}</p>
+        <p className="mt-6 label-l text-vulcan-50 max-md:text-base md:leading-5.5">
           by{" "}
           <Link
             href={routes.creator(course.creator.slug)}
@@ -45,7 +47,7 @@ export function CourseHero({ course, className }: CourseHeroProps) {
           ))}
         </ul>
       </div>
-      <ShareButton title={course.title} />
+      <ShareButton title={course.title} className="3xl:-mr-[calc(5.3125rem/tan(atan2(100cqw,75rem)))]" />
     </div>
   );
 }

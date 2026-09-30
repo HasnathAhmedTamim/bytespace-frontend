@@ -26,7 +26,7 @@ export function CourseTabs({ slug, className }: { slug: string; className?: stri
                 scroll={false}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "inline-flex h-11 items-center rounded-full px-4.25 body-m transition-colors outline-none focus-visible:ring-3 focus-visible:ring-primary-800/40",
+                  "inline-flex h-10.75 items-center rounded-full px-4 label-m transition-colors outline-none focus-visible:ring-3 focus-visible:ring-primary-800/40",
                   active
                     ? "bg-secondary-400 text-neutral-950"
                     : "bg-neutral-50 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950"

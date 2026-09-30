@@ -49,6 +49,8 @@
   --color-ink: #040819;
   /* Figma "Black/700": testimonial copy */
   --color-black-700: #4f4f4f;
+  --color-black-200: #d1d1d1;
+  --color-vulcan-50: #f1f4fe;
 
   --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;

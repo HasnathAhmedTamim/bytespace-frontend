@@ -1,10 +1,17 @@
 import { images } from "@/constants/images";
 import type { Course, CourseDetail } from "@/types/course";
 
-type CourseDetailContent = Omit<CourseDetail, keyof Course>;
+/** Detail-page copy, plus any catalogue figures the detail design shows differently from the course card. */
+type CourseDetailContent = Omit<CourseDetail, keyof Course> &
+  Partial<Pick<Course, "level" | "rating" | "lessons" | "duration" | "enrolled">>;
 
 export const courseDetailContent: Record<string, CourseDetailContent> = {
   "build-digital-asset": {
+    level: "Intermediate",
+    rating: 4.8,
+    lessons: 112,
+    duration: "24 hours",
+    enrolled: 199,
     headline: "Build Digital Asset: A Comprehensive Guide",
     subtitle: "Unlock the Power of Digital Creation with Expert Guidance",
     reviews: 172,

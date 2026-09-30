@@ -11,7 +11,7 @@ export function PreviewPlayButton({ title, className }: { title: string; classNa
       aria-label={`Play preview: ${title}`}
       onClick={() => toast("Preview coming soon", { description: "Enroll to unlock every video lesson." })}
       className={cn(
-        "grid size-20 place-items-center rounded-2xl border border-neutral-950/40 bg-white/10 backdrop-blur-2xl transition-transform duration-200 outline-none hover:scale-105 focus-visible:ring-3 focus-visible:ring-secondary-400 md:size-26",
+        "grid size-20 place-items-center rounded-3xl border border-black-700 bg-[rgb(61_61_61/0.24)] backdrop-blur-[20px] transition-transform duration-200 outline-none hover:scale-105 focus-visible:ring-3 focus-visible:ring-secondary-400 md:size-26",
         className
       )}
     >
