@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { CourseTabs } from "@/components/courses/course-tabs";
 import { Container } from "@/components/shared/container";
 import { PageTransition } from "@/components/shared/page-transition";
+import { ScrollToTop } from "@/components/shared/scroll-to-top";
 import { CourseEnrollCard } from "@/components/sections/course-details/course-enroll-card";
 import { CourseHero } from "@/components/sections/course-details/course-hero";
 import { CoursePreview } from "@/components/sections/course-details/course-preview";
@@ -48,6 +49,7 @@ export default async function CourseLayout({ params, children }: LayoutProps<"/c
           </div>
         </div>
       </Container>
+      <ScrollToTop />
     </PageTransition>
   );
 }
