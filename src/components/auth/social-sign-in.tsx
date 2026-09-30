@@ -15,23 +15,23 @@ const providers = [
 
 export function SocialSignIn() {
   return (
-    <div className="mt-12 lg:mt-18">
-      <div className="flex items-center gap-3 body-m text-neutral-400 sm:body-l">
-        <span aria-hidden="true" className="h-px flex-1 bg-neutral-100" />
+    <div className="mt-12 xl:mt-18">
+      <div className="flex items-center gap-2.75 body-m text-neutral-400 sm:body-l">
+        <span aria-hidden="true" className="h-px max-w-50 flex-1 bg-neutral-200" />
         or
-        <span aria-hidden="true" className="h-px flex-1 bg-neutral-100" />
+        <span aria-hidden="true" className="h-px max-w-50 flex-1 bg-neutral-200" />
       </div>
 
-      <ul className="mt-8 flex justify-center gap-4 lg:mt-10">
+      <ul className="mt-8 flex justify-center gap-4 xl:mt-10">
         {providers.map(({ name, path }) => (
           <li key={name}>
             <button
               type="button"
               aria-label={`Continue with ${name}`}
               onClick={() => toast.info(`${name} sign-in isn't available yet. Please use your email instead.`)}
-              className="grid size-18 place-items-center rounded-[1.25rem] border border-neutral-200 bg-white text-black transition-colors outline-none hover:border-neutral-300 hover:bg-neutral-50 focus-visible:ring-3 focus-visible:ring-primary-800/30"
+              className="grid size-18 place-items-center rounded-3xl border border-neutral-200 bg-white text-black transition-colors outline-none hover:border-neutral-300 hover:bg-neutral-50 focus-visible:ring-3 focus-visible:ring-primary-800/30"
             >
-              <svg viewBox="0 0 24 24" aria-hidden="true" className="size-9 fill-current">
+              <svg viewBox="0 0 24 24" aria-hidden="true" className="size-8 fill-current">
                 <path d={path} />
               </svg>
             </button>

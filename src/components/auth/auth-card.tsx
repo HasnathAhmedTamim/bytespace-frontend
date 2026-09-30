@@ -1,17 +1,23 @@
 import Link from "next/link";
 
+import { cardVariants } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+
 type AuthCardProps = {
   eyebrow: string;
   title: React.ReactNode;
   children: React.ReactNode;
-  footer: { prompt: string; linkLabel: string; href: string };
+  footer: { prompt: string; linkLabel: string; href: string; className?: string };
 };
 
 export function AuthCard({ eyebrow, title, children, footer }: AuthCardProps) {
   return (
     <section
       aria-labelledby="auth-title"
-      className="flex flex-col rounded-3xl bg-white px-5 py-8 sm:px-10 sm:py-12 lg:min-h-[48.9375rem] lg:px-12 lg:pt-15 lg:pb-10 xl:px-15.5"
+      className={cn(
+        cardVariants({ variant: "plain" }),
+        "flex flex-col px-5 py-8 sm:px-10 sm:py-12 xl:min-h-[49rem] xl:px-12 xl:pt-15.25 xl:pb-10 3xl:px-15.75"
+      )}
     >
       <p className="body-m text-primary-800 sm:body-l">{eyebrow}</p>
       <h1 id="auth-title" className="heading-s text-neutral-950 md:heading-m">
@@ -20,7 +26,7 @@ export function AuthCard({ eyebrow, title, children, footer }: AuthCardProps) {
 
       {children}
 
-      <p className="mt-auto pt-12 text-center body-m text-neutral-600 sm:body-l lg:pt-18">
+      <p className={cn("mt-auto pt-12 text-center body-m text-neutral-400", footer.className)}>
         {footer.prompt}{" "}
         <Link
           href={footer.href}

@@ -16,10 +16,20 @@ export function AuthShowcase({ className }: { className?: string }) {
       inert
       className={className}
     >
-      <div className="relative h-[calc(557px*var(--stage-scale))] [--stage-scale:0.75] xl:[--stage-scale:1]">
+      <div className="relative h-[calc(557px*var(--stage-scale))] [--stage-scale:0.75] 3xl:[--stage-scale:1]">
         <div className="absolute top-0 left-0 h-[557px] w-[496px] origin-top-left scale-(--stage-scale)">
-          <CourseCard course={backCourse} imageSizes="341px" className="absolute top-[90px] left-0 w-[373px]" />
-          <CourseCard course={frontCourse} imageSizes="341px" className="absolute top-0 left-[111px] w-[373px]" />
+          <CourseCard
+            course={backCourse}
+            tone="inverse"
+            imageSizes="341px"
+            className="absolute top-[90px] left-0 w-[373px]"
+          />
+          <CourseCard
+            course={frontCourse}
+            tone="inverse"
+            imageSizes="341px"
+            className="absolute top-0 left-[111px] w-[373px]"
+          />
           <HappyStudentsCard tone="lime" className="absolute top-[435px] left-[226px]" />
           <Image
             src={images.shapes.springWhite}

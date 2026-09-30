@@ -67,7 +67,7 @@ export function AuthForm({ fields, submitLabel, pendingLabel, successMessage, va
   }
 
   return (
-    <form noValidate onSubmit={handleSubmit} className="mt-8 flex flex-col md:mt-10">
+    <form noValidate onSubmit={handleSubmit} className="mt-8 flex flex-col md:mt-10 xl:mt-10.5">
       <div className="flex flex-col gap-6">
         {fields.map((field) => {
           const id = `${idPrefix}-${field.name}`;
@@ -85,7 +85,7 @@ export function AuthForm({ fields, submitLabel, pendingLabel, successMessage, va
                 aria-describedby={error ? `${id}-error` : undefined}
                 disabled={pending}
                 onChange={() => clearError(field.name)}
-                className="rounded-xl px-5 text-lg sm:px-6"
+                className="px-5 text-lg sm:px-6"
               />
               {error && (
                 <p id={`${id}-error`} className="body-s text-destructive">
@@ -97,7 +97,7 @@ export function AuthForm({ fields, submitLabel, pendingLabel, successMessage, va
         })}
       </div>
 
-      <Button type="submit" disabled={pending} aria-busy={pending} className="mt-6 h-11.5 self-end px-6 text-lg">
+      <Button type="submit" disabled={pending} aria-busy={pending} className="mt-6 h-11.5 self-end px-6 label-l text-lg">
         {pending ? pendingLabel : submitLabel}
       </Button>
     </form>
