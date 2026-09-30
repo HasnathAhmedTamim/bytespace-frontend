@@ -36,7 +36,7 @@ export function CreatorStats({ name, products, followers, className }: CreatorSt
         type="button"
         aria-pressed={following}
         onClick={() => setFollowing((value) => !value)}
-        className={cn("px-6 md:h-11.5 md:text-lg md:leading-5.5", following && "bg-white hover:bg-neutral-50 hover:shadow-none")}
+        className={cn("px-6 text-ink md:h-11.5 md:text-lg md:leading-5.5", following && "bg-white hover:bg-neutral-50 hover:shadow-none")}
       >
         {following && <Check aria-hidden="true" className="size-5" />}
         {following ? "Following" : "Follow"}

@@ -15,9 +15,10 @@ export function CreatorHero({ creator, products }: CreatorHeroProps) {
       aria-labelledby="creator-name"
       tone="brand"
       clearHeader
-      className="bg-position-[calc(50%+60px)_-2px] text-white"
-      containerClassName="pt-8 pb-12 md:pt-7 md:pb-16 xl:pt-13 xl:pb-20.5"
+      className="bg-position-[calc(50%+60px)_-2px] text-neutral-50"
+      containerClassName="@container"
     >
+      <div className="pt-8 pb-12 md:pt-7 md:pb-16 xl:pt-13 xl:pb-20.5 3xl:frame-zoom">
         <div className="flex items-center gap-4 md:gap-6 3xl:ml-0.5">
           <Image
             src={creator.portrait ?? creator.avatar}
@@ -40,7 +41,7 @@ export function CreatorHero({ creator, products }: CreatorHeroProps) {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col body-l max-md:text-base md:mt-10 md:leading-7.25 3xl:ml-0.5">
+        <div className="mt-8 flex flex-col body-l max-md:text-base md:mt-10 md:leading-7.25 3xl:ml-0.5 3xl:max-w-299.25">
           {creator.about.map((paragraph) => (
             <p key={paragraph.slice(0, 32)}>{paragraph}</p>
           ))}
@@ -52,6 +53,7 @@ export function CreatorHero({ creator, products }: CreatorHeroProps) {
           followers={creator.followers}
           className="mt-8 md:mt-10 3xl:ml-0.5"
         />
+      </div>
     </Section>
   );
 }
