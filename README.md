@@ -23,14 +23,13 @@ A responsive, pixel-faithful implementation of the **ByteSpace** Figma design: a
 
 ## About the project
 
-ByteSpace is an online course platform UI. The goal was to turn the Figma design into a production-quality frontend that:
+ByteSpace is an online learning marketplace that brings learners and course creators together in one place.
 
-- matches the design closely at the 1440px reference width;
-- keeps the same scale on large monitors (1920px, 2560px) instead of stretching;
-- adapts cleanly to laptops, tablets and phones down to 390px;
-- is built from small, reusable and fully typed components.
+**For learners**, it is a place to discover new skills. They can browse a wide range of courses across categories such as design, development, business, marketing and photography, search for a topic or a favourite creator, and narrow the results by level, price and rating. Each course has its own page with a description, a lesson breakdown and reviews from other learners, so they can decide with confidence before enrolling.
 
-All course, creator, category and testimonial content comes from typed mock data, so the app runs without a backend, database or environment variables.
+**For creators**, ByteSpace is a place to share their expertise and earn from it. Every creator has a public profile that shows their story, their audience and all of their courses, and the platform highlights how creators can publish, manage and monetise courses and build a community around them.
+
+This repository contains the frontend of the platform: the landing page, course catalogue, course details, creator profiles, sign-in and sign-up, and a custom 404 page. It was built from the ByteSpace Figma design as a frontend assessment. The content is realistic sample data, so the site runs on its own without a backend.
 
 ## Features
 
