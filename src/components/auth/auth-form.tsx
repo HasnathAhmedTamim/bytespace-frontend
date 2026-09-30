@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Spinner } from "@/components/ui/spinner";
 import { routes } from "@/constants/navigation";
 import type { AuthErrors, AuthValues } from "@/lib/auth-validation";
 
@@ -100,6 +101,7 @@ export function AuthForm({ fields, submitLabel, pendingLabel, successMessage, va
       </div>
 
       <Button type="submit" disabled={pending} aria-busy={pending} className="mt-6 h-11.5 self-end px-6 label-l text-lg">
+        {pending && <Spinner className="size-5" />}
         {pending ? pendingLabel : submitLabel}
       </Button>
     </form>

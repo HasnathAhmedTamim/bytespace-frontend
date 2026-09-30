@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { CourseResults } from "@/components/sections/courses/course-results";
 import { CoursesFilters } from "@/components/sections/courses/courses-filters";
 import { CoursesSearchBanner } from "@/components/sections/courses/courses-search-banner";
+import { PendingNavigationProvider } from "@/components/shared/pending-navigation";
 import { parseCourseFilters } from "@/lib/course-filters";
 
 export const metadata: Metadata = {
@@ -16,8 +17,10 @@ export default async function CoursesPage({ searchParams }: PageProps<"/courses"
   return (
     <>
       <CoursesSearchBanner filters={filters} />
-      <CoursesFilters filters={filters} />
-      <CourseResults filters={filters} />
+      <PendingNavigationProvider>
+        <CoursesFilters filters={filters} />
+        <CourseResults filters={filters} />
+      </PendingNavigationProvider>
     </>
   );
 }

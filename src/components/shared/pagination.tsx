@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+import { PendingLink } from "@/components/shared/pending-navigation";
 import { cn } from "@/lib/utils";
 
 type PaginationProps = {
@@ -40,13 +40,13 @@ export function Pagination({ page, pageCount, hrefForPage, className }: Paginati
   return (
     <nav aria-label="Pagination" className={cn("flex items-center justify-center gap-2 sm:gap-4", className)}>
       {hasPrevious ? (
-        <Link
+        <PendingLink
           href={hrefForPage(page - 1)}
           aria-label="Previous page"
           className={cn(arrowClass, "text-neutral-950 transition-colors hover:border-neutral-400")}
         >
           <ChevronLeft aria-hidden="true" strokeWidth={2.25} />
-        </Link>
+        </PendingLink>
       ) : (
         <span aria-disabled="true" aria-label="Previous page" role="link" className={cn(arrowClass, "text-neutral-700")}>
           <ChevronLeft aria-hidden="true" strokeWidth={2.25} />
@@ -57,7 +57,7 @@ export function Pagination({ page, pageCount, hrefForPage, className }: Paginati
         {pageItems(page, pageCount).map((item) =>
           typeof item === "number" ? (
             <li key={item}>
-              <Link
+              <PendingLink
                 href={hrefForPage(item)}
                 aria-label={`Page ${item}`}
                 aria-current={item === page ? "page" : undefined}
@@ -67,7 +67,7 @@ export function Pagination({ page, pageCount, hrefForPage, className }: Paginati
                 )}
               >
                 {item}
-              </Link>
+              </PendingLink>
             </li>
           ) : (
             <li key={item} aria-hidden="true" className="px-1 font-sans text-xl font-bold text-neutral-400">
@@ -78,13 +78,13 @@ export function Pagination({ page, pageCount, hrefForPage, className }: Paginati
       </ol>
 
       {hasNext ? (
-        <Link
+        <PendingLink
           href={hrefForPage(page + 1)}
           aria-label="Next page"
           className={cn(arrowClass, "text-neutral-950 transition-colors hover:border-neutral-400")}
         >
           <ChevronRight aria-hidden="true" strokeWidth={2.25} />
-        </Link>
+        </PendingLink>
       ) : (
         <span aria-disabled="true" aria-label="Next page" role="link" className={cn(arrowClass, "text-neutral-700")}>
           <ChevronRight aria-hidden="true" strokeWidth={2.25} />
