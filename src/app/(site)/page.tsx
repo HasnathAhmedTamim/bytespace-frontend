@@ -56,10 +56,9 @@ function Block({ title, children }: { title: string; children: React.ReactNode }
 
 export default function DesignSystemPreview() {
   return (
-    <main className="flex-1">
-      <div className="bg-grid bg-primary-800">
+    <div>
+      <div className="bg-grid bg-primary-800 pt-(--header-height)">
         <Container className="flex flex-col gap-10 py-16">
-          <Logo className="text-white" />
           <SectionHeading
             tone="light"
             as="h1"
@@ -103,7 +102,7 @@ export default function DesignSystemPreview() {
             {typeScale.map((t) => (
               <div key={t.className} className="flex flex-col gap-1">
                 <span className="label-xs text-neutral-400">{t.label}</span>
-                <p className={`${t.className} text-neutral-950`}>
+                <p className={`${t.className} break-words text-neutral-950`}>
                   We ignite opportunity by setting the world in motion.
                 </p>
               </div>
@@ -206,6 +205,6 @@ export default function DesignSystemPreview() {
           </div>
         </Block>
       </Container>
-    </main>
+    </div>
   );
 }

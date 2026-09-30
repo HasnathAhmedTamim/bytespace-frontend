@@ -83,6 +83,7 @@
 }
 
 :root {
+  --header-height: 4.5rem;
   --radius: 0.75rem;
   --background: #ffffff;
   --foreground: var(--color-neutral-950);
@@ -102,6 +103,12 @@
   --border: var(--color-neutral-200);
   --input: var(--color-neutral-200);
   --ring: var(--color-primary-800);
+}
+
+@media (width >= 48rem) {
+  :root {
+    --header-height: 6.25rem;
+  }
 }
 
 /* Typography scale — Poppins SemiBold headings, Satoshi body/labels */
