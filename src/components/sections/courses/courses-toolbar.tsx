@@ -16,14 +16,22 @@ import {
   sortOptions,
   type CourseFilters,
   type FilterKey,
+  type FilterOption,
 } from "@/lib/course-filters";
 
-export function CoursesToolbar({ filters }: { filters: CourseFilters }) {
+type CoursesToolbarProps = {
+  filters: CourseFilters;
+  /** Page the filters apply to; defaults to the Courses page. */
+  pathname?: string;
+  categories?: readonly FilterOption[];
+};
+
+export function CoursesToolbar({ filters, pathname, categories = categoryOptions }: CoursesToolbarProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
   const select = (key: FilterKey, value: string | undefined) => {
-    startTransition(() => router.push(coursesHref(filters, { [key]: value }), { scroll: false }));
+    startTransition(() => router.push(coursesHref(filters, { [key]: value }, undefined, pathname), { scroll: false }));
   };
 
   const extraFilterCount = [filters.price, filters.rating].filter(Boolean).length;
@@ -53,10 +61,10 @@ export function CoursesToolbar({ filters }: { filters: CourseFilters }) {
           onSelect={select}
         />
         <FilterMenu
-          label={optionLabel(categoryOptions, filters.category) ?? "Category"}
+          label={optionLabel(categories, filters.category) ?? "Category"}
           icon={<CategoryIcon />}
           active={Boolean(filters.category)}
-          groups={[{ key: "category", options: categoryOptions, value: filters.category, allLabel: "All categories" }]}
+          groups={[{ key: "category", options: categories, value: filters.category, allLabel: "All categories" }]}
           contentClassName="max-h-(--radix-dropdown-menu-content-available-height) md:max-h-96"
           onSelect={select}
         />

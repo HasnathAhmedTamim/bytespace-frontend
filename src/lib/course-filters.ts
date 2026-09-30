@@ -93,7 +93,12 @@ export function parseCourseFilters(params: SearchParams): CourseFilters {
   };
 }
 
-export function coursesHref(filters: CourseFilters, patch: FilterPatch = {}, hash?: string) {
+export function coursesHref(
+  filters: CourseFilters,
+  patch: FilterPatch = {},
+  hash?: string,
+  pathname: string = routes.courses
+) {
   const next: FilterPatch = { ...filters, page: undefined, ...patch };
   const params = new URLSearchParams();
 
@@ -104,7 +109,7 @@ export function coursesHref(filters: CourseFilters, patch: FilterPatch = {}, has
   }
 
   const query = params.toString();
-  return `${routes.courses}${query ? `?${query}` : ""}${hash ? `#${hash}` : ""}`;
+  return `${pathname}${query ? `?${query}` : ""}${hash ? `#${hash}` : ""}`;
 }
 
 function matchesQuery(course: Course, filters: CourseFilters) {
@@ -122,7 +127,7 @@ const sorters: Record<CourseSort, (a: Course, b: Course) => number> = {
   "price-desc": (a, b) => b.price - a.price,
 };
 
-export function queryCourses(courses: readonly Course[], filters: CourseFilters) {
+export function queryCourses(courses: readonly Course[], filters: CourseFilters, perPage = coursesPerPage) {
   const matches = courses
     .filter(
       (course) =>
@@ -135,12 +140,12 @@ export function queryCourses(courses: readonly Course[], filters: CourseFilters)
     .sort(sorters[filters.sort ?? defaultSort]);
 
   const total = matches.length;
-  const pageCount = Math.max(1, Math.ceil(total / coursesPerPage));
+  const pageCount = Math.max(1, Math.ceil(total / perPage));
   const page = Math.min(filters.page ?? 1, pageCount);
-  const start = (page - 1) * coursesPerPage;
+  const start = (page - 1) * perPage;
 
   return {
-    items: matches.slice(start, start + coursesPerPage),
+    items: matches.slice(start, start + perPage),
     total,
     page,
     pageCount,

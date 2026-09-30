@@ -5,17 +5,44 @@ import { Card } from "@/components/ui/card";
 import { CourseCard } from "@/components/courses/course-card";
 import { Section } from "@/components/shared/section";
 import { Pagination } from "@/components/shared/pagination";
+import { routes } from "@/constants/navigation";
 import { catalogue } from "@/data/catalogue";
 import { courseResultsId, coursesHref, queryCourses, type CourseFilters } from "@/lib/course-filters";
+import { cn } from "@/lib/utils";
+import type { Course } from "@/types/course";
 
-export function CourseResults({ filters }: { filters: CourseFilters }) {
-  const { items, total, page, pageCount, start } = queryCourses(catalogue, filters);
+type CourseResultsProps = {
+  filters: CourseFilters;
+  courses?: readonly Course[];
+  /** Page the filters and pagination link to; defaults to the Courses page. */
+  pathname?: string;
+  perPage?: number;
+  /** Set to false to show only the first page of results. */
+  paginate?: boolean;
+  className?: string;
+  gridClassName?: string;
+};
+
+export function CourseResults({
+  filters,
+  courses = catalogue,
+  pathname = routes.courses,
+  perPage,
+  paginate = true,
+  className,
+  gridClassName,
+}: CourseResultsProps) {
+  const { items, total, page, pageCount, start } = queryCourses(
+    courses,
+    paginate ? filters : { ...filters, page: undefined },
+    perPage
+  );
 
   return (
     <Section
       id={courseResultsId}
       aria-labelledby="course-results-heading"
-      className="scroll-mt-(--header-height) pt-10 pb-16 md:pt-12 md:pb-20 xl:pt-19 xl:pb-18 3xl:pt-19.25"
+      className={cn("scroll-mt-(--header-height) pt-10 pb-16 md:pt-12 md:pb-20 xl:pt-19 xl:pb-18 3xl:pt-19.25", className)}
     >
         <h2 id="course-results-heading" className="sr-only">
           Courses
@@ -27,7 +54,7 @@ export function CourseResults({ filters }: { filters: CourseFilters }) {
         </p>
 
         {items.length > 0 ? (
-          <ul className="grid gap-5 md:grid-cols-2 md:gap-4 lg:gap-6 xl:grid-cols-3 xl:gap-10 3xl:pl-px">
+          <ul className={cn("grid gap-5 md:grid-cols-2 md:gap-4 lg:gap-6 xl:grid-cols-3 xl:gap-10 3xl:pl-px", gridClassName)}>
             {items.map((course, index) => (
               <li key={course.slug} className="flex min-w-0">
                 <CourseCard course={course} className="w-full" imagePreload={index < 3} />
@@ -41,17 +68,19 @@ export function CourseResults({ filters }: { filters: CourseFilters }) {
               Try a different search term or remove some filters to see more courses.
             </p>
             <Button asChild variant="primary">
-              <Link href={coursesHref({})}>Clear all filters</Link>
+              <Link href={coursesHref({}, {}, undefined, pathname)}>Clear all filters</Link>
             </Button>
           </Card>
         )}
 
-        <Pagination
-          page={page}
-          pageCount={pageCount}
-          hrefForPage={(target) => coursesHref(filters, { page: target }, courseResultsId)}
-          className="mt-12 md:mt-16 xl:mt-18"
-        />
+        {paginate && (
+          <Pagination
+            page={page}
+            pageCount={pageCount}
+            hrefForPage={(target) => coursesHref(filters, { page: target }, courseResultsId, pathname)}
+            className="mt-12 md:mt-16 xl:mt-18"
+          />
+        )}
     </Section>
   );
 }

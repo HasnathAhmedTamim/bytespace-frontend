@@ -11,7 +11,12 @@ export type Creator = {
   displayName: string;
   role: string;
   avatar: string;
+  /** Larger square photo for the profile page; falls back to `avatar`. */
+  portrait?: string;
   bio: string;
+  headline: string;
+  about: string[];
+  followers: number;
 };
 
 export type Course = {
