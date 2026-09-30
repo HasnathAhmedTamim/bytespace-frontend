@@ -1,7 +1,7 @@
 export function GradientBackdrop({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative isolate overflow-hidden bg-neutral-25">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 3xl:frame-zoom-viewport">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 inset-x-[max(0px,calc(50%-45rem))] -z-10">
         <div className="absolute top-[788px] -right-[419px] size-[1137px] bg-orb blur-[20px] [--glow:rgb(0_59_226/0.24)]" />
         <div className="absolute -top-[466px] -left-[152px] size-[1137px] bg-orb blur-[20px] [--glow:rgb(203_252_1/0.4)]" />
         <div className="absolute top-[183px] -left-[508px] size-[1137px] bg-orb blur-[20px] [--glow:rgb(0_59_226/0.16)]" />

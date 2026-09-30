@@ -9,9 +9,8 @@ export function CategoriesSection() {
       id="categories"
       aria-labelledby="categories-heading"
       className="scroll-mt-(--header-height)"
-      containerClassName="@container"
     >
-      <div className="pt-14 pb-16 md:pt-18 md:pb-24 xl:pb-30 3xl:frame-zoom">
+      <div className="pt-14 pb-16 md:pt-18 md:pb-24 xl:pb-30">
         <SectionHeading
           id="categories-heading"
           size="s"

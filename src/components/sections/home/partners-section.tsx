@@ -5,8 +5,8 @@ import { images } from "@/constants/images";
 
 export function PartnersSection() {
   return (
-    <Section aria-label="Our partners" tone="muted" containerClassName="@container">
-      <ul className="flex flex-wrap items-end justify-center gap-x-5 gap-y-6 py-10 sm:gap-x-6 md:py-14 xl:gap-x-10 xl:py-20 3xl:gap-x-18 3xl:frame-zoom">
+    <Section aria-label="Our partners" tone="muted">
+      <ul className="flex flex-wrap items-end justify-center gap-x-5 gap-y-6 py-10 sm:gap-x-6 md:py-14 xl:gap-x-10 xl:py-20 3xl:gap-x-18">
         {images.partners.map(({ src, width, height }) => (
           <li key={src}>
             <Image

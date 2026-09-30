@@ -93,6 +93,8 @@
 :root {
   --header-height: 4.5rem;
   --container-padding: 1.5rem;
+  /* Figma content width: the 1440 frame minus its 120px gutters */
+  --container-max: 75rem;
   --radius: 0.75rem;
   --background: #ffffff;
   --foreground: var(--color-neutral-950);
@@ -127,12 +129,6 @@
   }
 }
 
-/* The header zooms with its content above 1440 (see frame-zoom), so its height follows */
-@media (width >= 90rem) {
-  :root {
-    --header-height: calc(7.5rem * tan(atan2(100vw - 15rem, 75rem)));
-  }
-}
 /* Typography scale — Poppins SemiBold headings, Satoshi body/labels */
 @utility heading-l {
   font-family: var(--font-heading);
@@ -217,19 +213,21 @@
   font-weight: 500;
 }
 
-/* Shared content container: full width, 24px mobile gutter growing fluidly to 120px at 1440 */
+/* Shared content container: 24px mobile gutter growing fluidly to 120px at 1440, then 1200px of centred content */
 @utility container-page {
   width: 100%;
+  max-width: calc(var(--container-max) + 2 * var(--container-padding));
+  margin-inline: auto;
   padding-inline: var(--container-padding);
 }
 
-/* Hero backdrop: 120px cells with 2px translucent white lines */
+/* Hero backdrop: 120px cells with 2px translucent white lines, centred on the content */
 @utility bg-grid {
   background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.12) calc(2px * var(--grid-zoom, 1)), transparent 0),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.12) calc(2px * var(--grid-zoom, 1)), transparent 0);
-  background-size: calc(120px * var(--grid-zoom, 1)) calc(120px * var(--grid-zoom, 1));
-  background-position: calc(50% + 60px * var(--grid-zoom, 1)) 0;
+    linear-gradient(to right, rgb(255 255 255 / 0.12) 2px, transparent 0),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.12) 2px, transparent 0);
+  background-size: 120px 120px;
+  background-position: calc(50% + 60px) 0;
 }
 
 /* Soft blurred colour blob; set the peak colour with --glow */
@@ -242,23 +240,6 @@
     color-mix(in srgb, var(--glow) 12%, transparent) 70%,
     transparent 100%
   );
-}
-
-/* Keeps a 1440 composition proportional on wider screens: zooms by (content width / 1200px), never below 1.
-   Needs an @container ancestor; the viewport variant is for layers outside one. */
-@utility frame-zoom {
-  zoom: max(1, tan(atan2(100cqw, 75rem)));
-}
-@utility frame-zoom-viewport {
-  zoom: max(1, tan(atan2(100vw - 15rem, 75rem)));
-}
-/* Frame-wide bands (decoration reaching both edges): zooms by (section width / 1440px). Needs the section as @container. */
-@utility frame-zoom-full {
-  zoom: max(1, tan(atan2(100cqw, 90rem)));
-}
-/* Scales a frame-wide band's own bg-grid by the same factor. Needs an @container ancestor of the section (main). */
-@utility grid-zoom-full {
-  --grid-zoom: max(1, tan(atan2(100cqw, 90rem)));
 }
 
 /* Figma ellipse glow: peak --glow fading to 23% at 53%, 6% at 75%, 0 at the edge */

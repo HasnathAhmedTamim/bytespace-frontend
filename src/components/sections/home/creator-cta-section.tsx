@@ -21,9 +21,9 @@ const shapes: Shape[] = [
   { src: images.shapes.springWhite, width: 177, height: 176, left: 178, top: 5 },
   { src: images.shapes.coneWhite, width: 140, height: 189, left: 0, bottom: 74 },
   { src: images.shapes.torusLime, width: 346, height: 190, left: 16, bottom: -1 },
-  { src: images.shapes.pyramidLime, width: 190, height: 189, left: 1078, top: 0 },
+  { src: images.shapes.pyramidLime, width: 190, height: 189, right: 172, top: 0 },
   { src: images.shapes.cylinderWhite, width: 218, height: 372, right: -1, top: 5 },
-  { src: images.shapes.springLimeFlat, width: 334, height: 199, left: 1107, bottom: 0 },
+  { src: images.shapes.springLimeFlat, width: 334, height: 199, right: -1, bottom: 0 },
 ];
 
 export function CreatorCtaSection() {
@@ -31,12 +31,12 @@ export function CreatorCtaSection() {
     <Section
       aria-labelledby="creator-cta-heading"
       tone="brand"
-      className="@container relative isolate overflow-hidden bg-position-[calc(50%+60px*var(--grid-zoom,1))_calc(-2px*var(--grid-zoom,1))] 3xl:grid-zoom-full"
-      containerClassName="flex flex-col items-center py-16 text-center md:pt-21.25 md:pb-21 3xl:frame-zoom-full"
+      className="relative isolate overflow-hidden bg-position-[calc(50%+60px)_-2px]"
+      containerClassName="flex flex-col items-center py-16 text-center md:pt-21.25 md:pb-21"
       background={
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-1/2 -z-10 hidden w-360 -translate-x-1/2 scale-90 lg:block xl:scale-100 3xl:frame-zoom-full"
+          className="pointer-events-none absolute inset-y-0 left-1/2 -z-10 hidden w-[max(90rem,100%)] -translate-x-1/2 scale-90 lg:block xl:scale-100"
         >
           {shapes.map((shape) => (
             <Image

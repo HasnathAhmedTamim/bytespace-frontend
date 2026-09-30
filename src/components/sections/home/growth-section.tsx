@@ -17,9 +17,8 @@ export function GrowthSection() {
     <Section
       aria-labelledby="growth-heading"
       className="pt-16 pb-8 md:pt-24 md:pb-10 xl:pt-30 xl:pb-9"
-      containerClassName="@container"
     >
-      <div className="flex flex-col gap-12 xl:flex-row xl:items-center xl:gap-10 3xl:gap-15.75 3xl:frame-zoom">
+      <div className="flex flex-col gap-12 xl:flex-row xl:items-center xl:gap-10 3xl:gap-15.75">
         <div className="xl:min-w-0 xl:flex-1 3xl:ml-px">
           <h2 id="growth-heading" className="max-w-143.5 heading-s text-balance text-neutral-950 md:heading-m lg:leading-13.25">
             Your Path to Professional Growth Starts Here!

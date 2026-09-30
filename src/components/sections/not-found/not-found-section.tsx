@@ -9,8 +9,8 @@ export function NotFoundSection() {
     <Section
       tone="brand"
       clearHeader
-      className="@container relative isolate flex-1 overflow-hidden bg-position-[0_calc(-2px*var(--grid-zoom,1))] 3xl:pt-0 3xl:grid-zoom-full"
-      containerClassName="flex flex-col items-center pt-8 pb-20 text-center [--digits:min(30rem,44vw)] md:pt-10 md:pb-24 lg:pb-31.25 3xl:pt-40 3xl:frame-zoom-full"
+      className="relative isolate flex-1 overflow-hidden bg-position-[calc(50%+60px)_-2px]"
+      containerClassName="flex flex-col items-center pt-8 pb-20 text-center [--digits:min(30rem,44vw)] md:pt-10 md:pb-24 lg:pb-31.25"
     >
       <p className="bg-[linear-gradient(180deg,var(--color-secondary-400)_0%,color-mix(in_srgb,var(--color-secondary-400)_96%,transparent)_25%,color-mix(in_srgb,var(--color-secondary-400)_81%,transparent)_50.5%,color-mix(in_srgb,var(--color-secondary-400)_61%,transparent)_68%,transparent_100%)] bg-clip-text font-heading text-(length:--digits) leading-none font-semibold tracking-[-0.01em] text-transparent select-none">
         404

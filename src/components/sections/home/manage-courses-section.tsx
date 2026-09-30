@@ -24,9 +24,8 @@ export function ManageCoursesSection() {
     <Section
       aria-labelledby="manage-courses-heading"
       className="pt-8 pb-16 md:pt-10 md:pb-24 xl:pt-9 xl:pb-30"
-      containerClassName="@container"
     >
-      <div className="flex flex-col gap-12 xl:flex-row-reverse xl:items-center xl:justify-end xl:gap-10 3xl:gap-19.75 3xl:frame-zoom">
+      <div className="flex flex-col gap-12 xl:flex-row-reverse xl:items-center xl:justify-end xl:gap-10 3xl:gap-19.75">
         <div className="xl:min-w-0 xl:flex-1">
           <h2 id="manage-courses-heading" className="max-w-[36.1875rem] heading-s text-balance text-neutral-950 md:heading-m lg:leading-13.25">
             Create &amp; Manage Courses Easily.

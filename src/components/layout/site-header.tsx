@@ -29,8 +29,8 @@ export function SiteHeader() {
           : "bg-transparent"
       )}
     >
-      <Container className="@container">
-        <div className="relative flex h-(--header-height) items-center justify-between md:items-start 3xl:h-30 3xl:frame-zoom">
+      <Container>
+        <div className="relative flex h-(--header-height) items-center justify-between md:items-start">
           <Link
             href={routes.home}
             aria-label="ByteSpace home"
