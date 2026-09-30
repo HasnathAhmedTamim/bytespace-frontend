@@ -4,9 +4,9 @@ import { LearningProgressCard } from "@/components/shared/learning-progress-card
 export function HeroCards() {
   return (
     <div aria-hidden="true" className="hidden md:block">
-      <div className="absolute top-[125px] left-[404px] w-52 rounded-xl bg-white px-4 pt-3.5 pb-4 shadow-soft">
+      <div className="absolute top-[125px] left-[404px] w-52 rounded-xl bg-white p-4 shadow-soft">
         <p className="label-m text-neutral-950">UI/UX Design</p>
-        <p className="mt-0.5 flex items-center gap-2 body-xs text-neutral-400">
+        <p className="flex items-center gap-2 body-xs text-neutral-400">
           200 Courses
           <span className="size-1 rounded-full bg-neutral-400" />
           1000+ Students
