@@ -1,18 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { LevelIcon } from "@/components/courses/filter-icons";
 import { cardVariants } from "@/components/ui/card";
 import { images } from "@/constants/images";
 import { routes } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
 import type { Course } from "@/types/course";
-
-function LevelIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
-      <path d="M17 4h3v16h-3zM5 14h3v6H5zm6-5h3v11h-3z" />
-    </svg>
-  );
-}
 
 function StarIcon({ large = false, className }: { large?: boolean; className?: string }) {
   return (
@@ -32,6 +25,7 @@ type CourseCardProps = {
   tone?: "default" | "inverse";
   className?: string;
   imageSizes?: string;
+  imagePreload?: boolean;
 };
 
 export function CourseCard({
@@ -39,6 +33,7 @@ export function CourseCard({
   tone = "default",
   className,
   imageSizes = "(min-width: 1280px) 341px, (min-width: 768px) 45vw, 90vw",
+  imagePreload = false,
 }: CourseCardProps) {
   const meta = [`${course.lessons} Lessons`, course.duration, `${course.comments} Comments`];
   const isInverse = tone === "inverse";
@@ -58,6 +53,7 @@ export function CourseCard({
           alt=""
           fill
           sizes={imageSizes}
+          preload={imagePreload}
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <ul
