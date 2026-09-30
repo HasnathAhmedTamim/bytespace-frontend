@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { Container } from "@/components/shared/container";
+import { Section } from "@/components/shared/section";
 import { CourseResults } from "@/components/sections/courses/course-results";
 import { CoursesToolbar } from "@/components/sections/courses/courses-toolbar";
 import { CreatorHero } from "@/components/sections/creators/creator-hero";
@@ -34,11 +34,9 @@ export default async function CreatorPage({ params, searchParams }: PageProps<"/
   return (
     <>
       <CreatorHero creator={creator} products={courses.length} />
-      <section aria-label="Course filters" className="pt-10 md:pt-12 xl:pt-15.5">
-        <Container>
-          <CoursesToolbar filters={filters} pathname={pathname} categories={categories} />
-        </Container>
-      </section>
+      <Section aria-label="Course filters" className="pt-10 md:pt-12 xl:pt-15.5">
+        <CoursesToolbar filters={filters} pathname={pathname} categories={categories} />
+      </Section>
       <CourseResults
         filters={filters}
         courses={courses}

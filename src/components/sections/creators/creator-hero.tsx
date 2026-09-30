@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { CreatorStats } from "@/components/creators/creator-stats";
-import { Container } from "@/components/shared/container";
+import { Section } from "@/components/shared/section";
 import type { Creator } from "@/types/course";
 
 type CreatorHeroProps = {
@@ -11,11 +11,13 @@ type CreatorHeroProps = {
 
 export function CreatorHero({ creator, products }: CreatorHeroProps) {
   return (
-    <section
+    <Section
       aria-labelledby="creator-name"
-      className="bg-primary-800 bg-grid bg-position-[calc(50%+60px)_-2px] pt-(--header-height) text-white"
+      tone="brand"
+      clearHeader
+      className="bg-position-[calc(50%+60px)_-2px] text-white"
+      containerClassName="pt-8 pb-12 md:pt-7 md:pb-16 xl:pt-13 xl:pb-20.5"
     >
-      <Container className="pt-8 pb-12 md:pt-12 md:pb-16 xl:pt-18 xl:pb-20.5">
         <div className="flex items-center gap-4 md:gap-6">
           <Image
             src={creator.portrait ?? creator.avatar}
@@ -50,7 +52,6 @@ export function CreatorHero({ creator, products }: CreatorHeroProps) {
           followers={creator.followers}
           className="mt-8 md:mt-10.5"
         />
-      </Container>
-    </section>
+    </Section>
   );
 }
