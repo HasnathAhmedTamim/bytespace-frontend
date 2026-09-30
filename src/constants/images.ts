@@ -44,6 +44,30 @@ export const images = {
     money: "/images/courses/course-money.jpg",
     startup: "/images/courses/course-startup.jpg",
   },
+  previews: {
+    digitalAsset: "/images/previews/build-digital-asset.jpg",
+  },
+  sneakPeek: {
+    digitalAsset: [
+      "/images/sneak-peek/digital-asset-1.jpg",
+      "/images/sneak-peek/digital-asset-2.jpg",
+      "/images/sneak-peek/digital-asset-3.jpg",
+      "/images/sneak-peek/digital-asset-4.jpg",
+    ],
+  },
+  creators: {
+    purepearlStudio: "/images/creators/purepearl-studio.png",
+    northwindAcademy: "/images/creators/northwind-academy.png",
+    pixelPineStudio: "/images/creators/pixel-pine-studio.png",
+    lumenLabs: "/images/creators/lumen-labs.png",
+    bluebirdSchool: "/images/creators/bluebird-school.png",
+  },
+  reviewers: {
+    purepearlStudio: "/images/reviewers/purepearl-studio.png",
+    albertFlores: "/images/reviewers/albert-flores.png",
+    codyFisher: "/images/reviewers/cody-fisher.png",
+    brooklynSimmons: "/images/reviewers/brooklyn-simmons.png",
+  },
   categories: {
     design: "/images/categories/design.png",
     development: "/images/categories/development.png",

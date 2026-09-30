@@ -1,7 +1,6 @@
 import { images } from "@/constants/images";
-import type { Course, Creator } from "@/types/course";
-
-export const purepearlStudio: Creator = { slug: "purepearl-studio", name: "purepearl studio" };
+import { purepearlStudio } from "@/data/creators";
+import type { Course } from "@/types/course";
 
 const defaults = {
   featured: true,
