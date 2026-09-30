@@ -1,8 +1,9 @@
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { CourseCard } from "@/components/courses/course-card";
-import { Container } from "@/components/shared/container";
+import { Section } from "@/components/shared/section";
 import { Pagination } from "@/components/shared/pagination";
 import { catalogue } from "@/data/catalogue";
 import { courseResultsId, coursesHref, queryCourses, type CourseFilters } from "@/lib/course-filters";
@@ -11,12 +12,11 @@ export function CourseResults({ filters }: { filters: CourseFilters }) {
   const { items, total, page, pageCount, start } = queryCourses(catalogue, filters);
 
   return (
-    <section
+    <Section
       id={courseResultsId}
       aria-labelledby="course-results-heading"
       className="scroll-mt-(--header-height) pt-10 pb-16 md:pt-12 md:pb-20 xl:pt-19 xl:pb-18"
     >
-      <Container>
         <h2 id="course-results-heading" className="sr-only">
           Courses
         </h2>
@@ -35,7 +35,7 @@ export function CourseResults({ filters }: { filters: CourseFilters }) {
             ))}
           </ul>
         ) : (
-          <div className="flex flex-col items-center gap-4 rounded-3xl border border-dashed border-neutral-200 px-6 py-16 text-center">
+          <Card variant="dashed" className="flex flex-col items-center gap-4 px-6 py-16 text-center">
             <p className="heading-xs text-ink">No courses found</p>
             <p className="max-w-md body-m text-neutral-400">
               Try a different search term or remove some filters to see more courses.
@@ -43,7 +43,7 @@ export function CourseResults({ filters }: { filters: CourseFilters }) {
             <Button asChild variant="primary">
               <Link href={coursesHref({})}>Clear all filters</Link>
             </Button>
-          </div>
+          </Card>
         )}
 
         <Pagination
@@ -52,7 +52,6 @@ export function CourseResults({ filters }: { filters: CourseFilters }) {
           hrefForPage={(target) => coursesHref(filters, { page: target }, courseResultsId)}
           className="mt-12 md:mt-16 xl:mt-18"
         />
-      </Container>
-    </section>
+    </Section>
   );
 }

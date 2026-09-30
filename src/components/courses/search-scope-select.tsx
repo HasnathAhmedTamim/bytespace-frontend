@@ -1,9 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { Check, ChevronDown } from "lucide-react";
+import { Check } from "lucide-react";
 import { DropdownMenu } from "radix-ui";
 
+import { ChevronDownIcon } from "@/components/shared/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { defaultSearchScope, isSearchScope, searchScopes, type SearchScope } from "@/constants/search";
 import { cn } from "@/lib/utils";
@@ -24,10 +25,10 @@ export function SearchScopeSelect({ name, defaultValue = defaultSearchScope, cla
       <DropdownMenu.Root modal={false}>
         <DropdownMenu.Trigger
           aria-label={`Search in: ${label}`}
-          className={cn(buttonVariants(), "group gap-2.5 font-normal data-[state=open]:bg-secondary-300", className)}
+          className={cn(buttonVariants(), "group gap-2 data-[state=open]:bg-secondary-300", className)}
         >
           {label}
-          <ChevronDown aria-hidden="true" className="size-6 transition-transform group-data-[state=open]:rotate-180" />
+          <ChevronDownIcon className="size-6 transition-transform group-data-[state=open]:rotate-180" />
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
           <DropdownMenu.Content
