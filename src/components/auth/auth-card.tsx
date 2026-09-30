@@ -19,8 +19,8 @@ export function AuthCard({ eyebrow, title, children, footer }: AuthCardProps) {
         "flex flex-col px-5 py-8 sm:px-10 sm:py-12 xl:min-h-[49rem] xl:px-12 xl:pt-15.25 xl:pb-10 3xl:px-15.75"
       )}
     >
-      <p className="body-m text-primary-800 sm:body-l">{eyebrow}</p>
-      <h1 id="auth-title" className="heading-s text-neutral-950 md:heading-m">
+      <p className="body-m text-primary-800 sm:body-l sm:leading-7.25">{eyebrow}</p>
+      <h1 id="auth-title" className="heading-s text-neutral-950 md:heading-m md:leading-13.25">
         {title}
       </h1>
 

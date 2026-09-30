@@ -22,7 +22,7 @@ export function AuthShowcase({ className }: { className?: string }) {
             course={backCourse}
             tone="inverse"
             imageSizes="341px"
-            className="absolute top-[90px] left-0 w-[373px]"
+            className="absolute top-[89px] left-0 w-[373px]"
           />
           <CourseCard
             course={frontCourse}
@@ -36,7 +36,7 @@ export function AuthShowcase({ className }: { className?: string }) {
             alt=""
             width={177}
             height={176}
-            className="absolute top-[321px] left-[350px] max-w-none"
+            className="absolute top-[321px] left-[348px] max-w-none"
           />
           <Image
             src={images.shapes.torusLimeRing}

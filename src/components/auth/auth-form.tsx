@@ -67,14 +67,16 @@ export function AuthForm({ fields, submitLabel, pendingLabel, successMessage, va
   }
 
   return (
-    <form noValidate onSubmit={handleSubmit} className="mt-8 flex flex-col md:mt-10 xl:mt-10.5">
+    <form noValidate onSubmit={handleSubmit} className="mt-8 flex flex-col md:mt-10">
       <div className="flex flex-col gap-6">
         {fields.map((field) => {
           const id = `${idPrefix}-${field.name}`;
           const error = errors[field.name];
           return (
             <div key={field.name} className="flex flex-col gap-2">
-              <Label htmlFor={id}>{field.label}</Label>
+              <Label htmlFor={id} className="leading-4.25">
+                {field.label}
+              </Label>
               <Input
                 id={id}
                 name={field.name}
