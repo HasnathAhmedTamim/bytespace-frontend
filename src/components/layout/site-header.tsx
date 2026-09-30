@@ -14,7 +14,7 @@ import { CartButton } from "./cart-button";
 import { MobileNav } from "./mobile-nav";
 
 const linkClass =
-  "text-base leading-tight rounded-sm text-white/85 transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-4 focus-visible:ring-offset-primary-800 focus-visible:outline-none";
+  "block rounded-sm text-neutral-50 transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-4 focus-visible:ring-offset-primary-800 focus-visible:outline-none";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -29,47 +29,49 @@ export function SiteHeader() {
           : "bg-transparent"
       )}
     >
-      <Container className="relative flex h-(--header-height) items-center justify-between">
-        <Link
-          href={routes.home}
-          aria-label="ByteSpace home"
-          className="rounded-sm focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-4 focus-visible:ring-offset-primary-800 focus-visible:outline-none"
-        >
-          <Logo className="h-7 text-white md:h-8.5" />
-        </Link>
-
-        <nav aria-label="Main" className="absolute left-1/2 hidden -translate-x-1/2 md:block">
-          <ul className="flex items-center gap-6">
-            {mainNav.map((item) => {
-              const active = isActivePath(pathname, item.href);
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    aria-current={active ? "page" : undefined}
-                    className={cn(linkClass, active ? "font-medium text-white" : "font-normal")}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-
-        <div className="hidden items-center gap-6 md:flex">
-          <Link href={routes.signIn} className={cn(linkClass, "font-normal")}>
-            Sign In
+      <Container className="@container">
+        <div className="relative flex h-(--header-height) items-center justify-between md:items-start 3xl:h-30 3xl:frame-zoom">
+          <Link
+            href={routes.home}
+            aria-label="ByteSpace home"
+            className="rounded-sm md:mt-8.75 md:ml-0.5 focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-4 focus-visible:ring-offset-primary-800 focus-visible:outline-none"
+          >
+            <Logo className="h-7 text-white md:h-8.5" />
           </Link>
-          <Link href={routes.signUp} className={cn(linkClass, "font-normal")}>
-            Join Us
-          </Link>
-          <CartButton className="-mr-1.5 -ml-2" />
-        </div>
 
-        <div className="flex items-center gap-1 md:hidden">
-          <CartButton />
-          <MobileNav pathname={pathname} />
+          <nav aria-label="Main" className="absolute top-12.25 left-[calc(50%-0.5px)] hidden -translate-x-1/2 md:block">
+            <ul className="flex items-start gap-6">
+              {mainNav.map((item) => {
+                const active = isActivePath(pathname, item.href);
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={active ? "page" : undefined}
+                      className={cn(linkClass, active ? "label-m" : "body-m")}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          <div className="hidden items-center gap-6 md:mt-10 md:flex">
+            <Link href={routes.signIn} className={cn(linkClass, "body-m leading-6")}>
+              Sign In
+            </Link>
+            <Link href={routes.signUp} className={cn(linkClass, "body-m leading-6")}>
+              Join Us
+            </Link>
+            <CartButton className="-mx-2" />
+          </div>
+
+          <div className="flex items-center gap-1 md:hidden">
+            <CartButton />
+            <MobileNav pathname={pathname} />
+          </div>
         </div>
       </Container>
     </header>

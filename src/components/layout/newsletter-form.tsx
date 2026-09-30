@@ -35,7 +35,7 @@ export function NewsletterForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-2">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-6">
         <label htmlFor="newsletter-email" className="sr-only">
           Email address
         </label>
@@ -47,10 +47,10 @@ export function NewsletterForm() {
           placeholder="Enter your email"
           aria-invalid={errors.email ? true : undefined}
           aria-describedby={errors.email ? "newsletter-email-error" : undefined}
-          className="sm:max-w-[23.5rem] sm:flex-1"
+          className="placeholder:text-neutral-950 sm:w-94 sm:flex-none"
           {...register("email")}
         />
-        <Button type="submit" disabled={isSubmitting} className="h-11.5 sm:w-26">
+        <Button type="submit" disabled={isSubmitting} className="h-11.5 text-lg leading-[1.2]">
           {isSubmitting ? "Sending…" : "Subscribe"}
         </Button>
       </div>

@@ -8,8 +8,12 @@ type SectionHeadingProps = {
   eyebrow?: React.ReactNode;
   align?: "left" | "center";
   tone?: "dark" | "light";
+  size?: "m" | "s";
   as?: "h1" | "h2" | "h3";
+  id?: string;
   className?: string;
+  titleClassName?: string;
+  descriptionClassName?: string;
 };
 
 export function SectionHeading({
@@ -18,15 +22,19 @@ export function SectionHeading({
   eyebrow,
   align = "center",
   tone = "dark",
+  size = "m",
   as: Heading = "h2",
+  id,
   className,
+  titleClassName,
+  descriptionClassName,
 }: SectionHeadingProps) {
   const isLight = tone === "light";
 
   return (
     <div
       className={cn(
-        "flex flex-col gap-4",
+        "flex flex-col gap-4 md:gap-5",
         align === "center" ? "mx-auto items-center text-center" : "items-start text-left",
         className
       )}
@@ -37,9 +45,11 @@ export function SectionHeading({
         </span>
       )}
       <Heading
+        id={id}
         className={cn(
-          "heading-s text-balance md:heading-m",
-          isLight ? "text-white" : "text-neutral-950"
+          size === "m" ? "heading-s md:heading-m" : "heading-s",
+          isLight ? "text-white" : "text-ink",
+          titleClassName
         )}
       >
         {title}
@@ -47,8 +57,9 @@ export function SectionHeading({
       {description && (
         <p
           className={cn(
-            "body-m max-w-3xl text-pretty",
-            isLight ? "text-white/85" : "text-neutral-400"
+            "body-m max-w-3xl text-pretty md:body-l",
+            isLight ? "text-white/85" : "text-neutral-400",
+            descriptionClassName
           )}
         >
           {description}

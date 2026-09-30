@@ -6,6 +6,7 @@
 
 @theme static {
   /* Neutral — Shuttle Gray */
+  --color-neutral-25: #fafafa;
   --color-neutral-50: #f5f5f6;
   --color-neutral-100: #e5e6e8;
   --color-neutral-200: #ced0d3;
@@ -43,6 +44,11 @@
   --color-secondary-800: #546b09;
   --color-secondary-900: #465a0d;
   --color-secondary-950: #243300;
+
+  /* Section headings */
+  --color-ink: #040819;
+  /* Figma "Black/700": testimonial copy */
+  --color-black-700: #4f4f4f;
 
   --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
@@ -84,6 +90,7 @@
 
 :root {
   --header-height: 4.5rem;
+  --container-padding: 1.5rem;
   --radius: 0.75rem;
   --background: #ffffff;
   --foreground: var(--color-neutral-950);
@@ -105,36 +112,53 @@
   --ring: var(--color-primary-800);
 }
 
-@media (width >= 48rem) {
+/* 48px at 768 rising linearly to Figma's 120px at 1440, then held on every wider screen */
+@media (width > 40rem) {
   :root {
-    --header-height: 6.25rem;
+    --container-padding: clamp(3rem, 10.7143vw - 2.1429rem, 7.5rem);
   }
 }
 
+@media (width >= 48rem) {
+  :root {
+    --header-height: 7.5rem;
+  }
+}
+
+/* The header zooms with its content above 1440 (see frame-zoom), so its height follows */
+@media (width >= 90rem) {
+  :root {
+    --header-height: calc(7.5rem * tan(atan2(100vw - 15rem, 75rem)));
+  }
+}
 /* Typography scale — Poppins SemiBold headings, Satoshi body/labels */
 @utility heading-l {
   font-family: var(--font-heading);
   font-size: 4.5rem;
   line-height: 1.2;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 @utility heading-m {
   font-family: var(--font-heading);
   font-size: 2.75rem;
   line-height: 1.2;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 @utility heading-s {
   font-family: var(--font-heading);
   font-size: 2.25rem;
   line-height: 1.2;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 @utility heading-xs {
   font-family: var(--font-heading);
   font-size: 1.25rem;
   line-height: 1.2;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 @utility body-l {
   font-family: var(--font-sans);
@@ -159,6 +183,12 @@
   font-size: 0.75rem;
   line-height: 1.6;
   font-weight: 400;
+}
+@utility label-xl {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  line-height: 1.2;
+  font-weight: 500;
 }
 @utility label-l {
   font-family: var(--font-sans);
@@ -185,25 +215,59 @@
   font-weight: 500;
 }
 
-/* 12-column grid: 1200px content inside a 1440px frame (120px margins, 40px gutter) */
+/* Shared content container: full width, 24px mobile gutter growing fluidly to 120px at 1440 */
 @utility container-page {
   width: 100%;
-  max-width: calc(75rem + 2 * var(--container-padding));
-  margin-inline: auto;
   padding-inline: var(--container-padding);
-  --container-padding: 1.25rem;
-
-  @variant md {
-    --container-padding: 2.5rem;
-  }
 }
 
 /* Hero backdrop: 120px cells with 2px translucent white lines */
 @utility bg-grid {
   background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.12) 2px, transparent 2px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.12) 2px, transparent 2px);
-  background-size: 120px 120px;
+    linear-gradient(to right, rgb(255 255 255 / 0.12) calc(2px * var(--grid-zoom, 1)), transparent 0),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.12) calc(2px * var(--grid-zoom, 1)), transparent 0);
+  background-size: calc(120px * var(--grid-zoom, 1)) calc(120px * var(--grid-zoom, 1));
+  background-position: calc(50% + 60px * var(--grid-zoom, 1)) 0;
+}
+
+/* Soft blurred colour blob; set the peak colour with --glow */
+@utility bg-glow {
+  background-image: radial-gradient(
+    closest-side,
+    var(--glow) 0%,
+    color-mix(in srgb, var(--glow) 84%, transparent) 20%,
+    color-mix(in srgb, var(--glow) 50%, transparent) 40%,
+    color-mix(in srgb, var(--glow) 12%, transparent) 70%,
+    transparent 100%
+  );
+}
+
+/* Keeps a 1440 composition proportional on wider screens: zooms by (content width / 1200px), never below 1.
+   Needs an @container ancestor; the viewport variant is for layers outside one. */
+@utility frame-zoom {
+  zoom: max(1, tan(atan2(100cqw, 75rem)));
+}
+@utility frame-zoom-viewport {
+  zoom: max(1, tan(atan2(100vw - 15rem, 75rem)));
+}
+/* Frame-wide bands (decoration reaching both edges): zooms by (section width / 1440px). Needs the section as @container. */
+@utility frame-zoom-full {
+  zoom: max(1, tan(atan2(100cqw, 90rem)));
+}
+/* Scales a frame-wide band's own bg-grid by the same factor. Needs an @container ancestor of the section (main). */
+@utility grid-zoom-full {
+  --grid-zoom: max(1, tan(atan2(100cqw, 90rem)));
+}
+
+/* Figma ellipse glow: peak --glow fading to 23% at 53%, 6% at 75%, 0 at the edge */
+@utility bg-orb {
+  background-image: radial-gradient(
+    50% 50% at 50% 50%,
+    var(--glow) 0%,
+    color-mix(in srgb, var(--glow) 23%, transparent) 53%,
+    color-mix(in srgb, var(--glow) 6%, transparent) 75%,
+    transparent 100%
+  );
 }
 
 @layer base {
