@@ -77,9 +77,6 @@ export const images = {
     marketing: "/assets/categories/marketing.png",
     photography: "/assets/categories/photography.png",
   },
-  notFound: {
-    digits: "/assets/not-found/404-lime.png",
-  },
   shapes: {
     cylinderWhite: "/assets/shapes/cylinder-white.png",
     torusLime: "/assets/shapes/torus-lime.png",
