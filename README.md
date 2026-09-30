@@ -67,6 +67,9 @@ This repository contains the frontend of the platform: the landing page, course 
 ### Global
 - Fixed header that gains a solid background on scroll, and a slide-out mobile navigation drawer.
 - Toast notifications for placeholder actions (cart, video preview, social sign-in).
+- Loading spinners where the user waits: the course grid dims and shows a spinner while filters, sorting or pagination load, and the search and form buttons show a spinner while submitting.
+- Smooth page transitions between pages, with the course image morphing from its card into the course details page.
+- Smooth scrolling for in-page links; new pages always open at the top.
 - Custom 404 page for unknown routes and unknown course or creator slugs.
 - SEO metadata for every page.
 
@@ -163,6 +166,7 @@ bytespace-frontend/
 - **Reusable primitives:** `Section` (full-width section with tones such as `brand`, `muted` and `subtle`), `Container`, `SectionHeading`, `Button`, `Card` and `Badge` variants built with `class-variance-authority`.
 - **Typed data layer:** mock data in `src/data`, shared types in `src/types`, and pure helpers in `src/lib` (for example `queryCourses` for search, filter, sort and pagination).
 - **URL as state:** catalogue filters are parsed from and written to search params, which keeps pages server-rendered and shareable.
+- **Pending UI and transitions:** filter and pagination links navigate inside a React transition shared through context, so only the results area shows a loading state; page changes use React's `<ViewTransition>` for the fade and the course image morph.
 
 ## Responsive design
 
@@ -176,11 +180,12 @@ bytespace-frontend/
 - Semantic landmarks and headings, labelled navigation and form controls.
 - Visible focus rings and keyboard-operable menus, chips and tabs.
 - Form errors linked with `aria-describedby` and `aria-invalid`; live regions for filtered results.
+- Loading areas and buttons set `aria-busy`, and the results and search spinners are announced with a label.
 - Decorative images are hidden from assistive technology, and motion respects `prefers-reduced-motion`.
 
 ## Git workflow
 
-- Each feature was developed on its own branch and merged into `main` through a pull request with a merge commit: project setup, design system, layout, home, courses, course details, creator profile, auth, 404 and a responsive container refactor.
+- Each feature was developed on its own branch and merged into `main` through a pull request with a merge commit: project setup, design system, layout, home, courses, course details, creator profile, auth, 404, a responsive container refactor, documentation, and loading states with page transitions.
 - Commits follow the `type(scope): description` convention (for example `feat(courses): build course discovery section`).
 - Lint, type-check and a production build were run before every commit.
 
