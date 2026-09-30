@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import { PendingLink } from "@/components/shared/pending-navigation";
 import { coursesHref, optionLabel, categoryOptions, type CourseFilters } from "@/lib/course-filters";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +26,7 @@ export function CategoryChips({ filters }: { filters: CourseFilters }) {
           const isActive = filters.category === slug;
           return (
             <li key={label} className="shrink-0">
-              <Link
+              <PendingLink
                 href={coursesHref(filters, { category: slug })}
                 scroll={false}
                 aria-current={isActive ? "true" : undefined}
@@ -39,7 +38,7 @@ export function CategoryChips({ filters }: { filters: CourseFilters }) {
                 )}
               >
                 {label}
-              </Link>
+              </PendingLink>
             </li>
           );
         })}

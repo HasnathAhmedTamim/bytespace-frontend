@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { PageTransition } from "@/components/shared/page-transition";
+import { PendingNavigationProvider } from "@/components/shared/pending-navigation";
 import { Section } from "@/components/shared/section";
 import { CourseResults } from "@/components/sections/courses/course-results";
 import { CoursesToolbar } from "@/components/sections/courses/courses-toolbar";
@@ -35,22 +37,25 @@ export default async function CreatorPage({ params, searchParams }: PageProps<"/
   const pathname = routes.creator(creator.slug);
 
   return (
-    <>
+    <PageTransition>
       <CreatorHero creator={creator} products={courses.length} />
-      <Section aria-label="Course filters">
-        <div className="pt-10 md:pt-12 xl:pt-15.5">
-          <CoursesToolbar filters={filters} pathname={pathname} categories={categories} />
-        </div>
-      </Section>
-      <CourseResults
-        filters={filters}
-        courses={courses}
-        pathname={pathname}
-        perPage={creatorCoursesShown}
-        paginate={false}
-        className="pt-8 md:pt-10 xl:pt-10 xl:pb-15.25 3xl:pt-10"
-        gridClassName="3xl:-ml-px 3xl:pl-0 3xl:pr-0.5"
-      />
-    </>
+      <PendingNavigationProvider>
+        <Section aria-label="Course filters">
+          <div className="pt-10 md:pt-12 xl:pt-15.5">
+            <CoursesToolbar filters={filters} pathname={pathname} categories={categories} />
+          </div>
+        </Section>
+        <CourseResults
+          filters={filters}
+          courses={courses}
+          pathname={pathname}
+          perPage={creatorCoursesShown}
+          paginate={false}
+          className="pt-8 md:pt-10 xl:pt-10 xl:pb-15.25 3xl:pt-10"
+          gridClassName="3xl:-ml-px 3xl:pl-0 3xl:pr-0.5"
+          imageTransition
+        />
+      </PendingNavigationProvider>
+    </PageTransition>
   );
 }

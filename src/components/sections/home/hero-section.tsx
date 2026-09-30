@@ -1,9 +1,9 @@
 import Form from "next/form";
 import Image from "next/image";
 
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SearchIcon } from "@/components/shared/icons";
+import { SearchSubmitButton } from "@/components/shared/search-status";
 import { Section } from "@/components/shared/section";
 import { HeroCards } from "@/components/sections/home/hero-cards";
 import { HeroShapes } from "@/components/sections/home/hero-shapes";
@@ -66,9 +66,7 @@ export function HeroSection() {
               className="rounded-3xl border-transparent pl-13 focus-visible:border-secondary-400 focus-visible:ring-secondary-400/40 md:pl-14 md:text-lg"
             />
           </div>
-          <Button type="submit" className="h-11.5 w-22 shrink-0 md:w-26 md:text-lg">
-            Search
-          </Button>
+          <SearchSubmitButton className="h-11.5 w-22 shrink-0 md:w-26 md:text-lg" />
         </Form>
     </Section>
   );

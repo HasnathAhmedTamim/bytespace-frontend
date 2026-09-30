@@ -7,6 +7,7 @@ import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Spinner } from "@/components/ui/spinner";
 
 const newsletterSchema = z.object({
   email: z.email("Please enter a valid email address"),
@@ -50,7 +51,8 @@ export function NewsletterForm() {
           className="placeholder:text-neutral-950 sm:w-94 sm:flex-none"
           {...register("email")}
         />
-        <Button type="submit" disabled={isSubmitting} className="h-11.5 text-lg leading-[1.2]">
+        <Button type="submit" disabled={isSubmitting} aria-busy={isSubmitting} className="h-11.5 text-lg leading-[1.2]">
+          {isSubmitting && <Spinner className="size-5" />}
           {isSubmitting ? "Sending…" : "Subscribe"}
         </Button>
       </div>

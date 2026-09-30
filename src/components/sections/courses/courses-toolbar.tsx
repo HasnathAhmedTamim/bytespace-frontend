@@ -1,10 +1,8 @@
 "use client";
 
-import { useTransition } from "react";
-import { useRouter } from "next/navigation";
-
 import { FilterMenu } from "@/components/courses/filter-menu";
 import { CategoryIcon, FunnelIcon, LevelIcon, SortIcon } from "@/components/courses/filter-icons";
+import { usePendingNavigation } from "@/components/shared/pending-navigation";
 import {
   categoryOptions,
   coursesHref,
@@ -27,11 +25,10 @@ type CoursesToolbarProps = {
 };
 
 export function CoursesToolbar({ filters, pathname, categories = categoryOptions }: CoursesToolbarProps) {
-  const router = useRouter();
-  const [isPending, startTransition] = useTransition();
+  const { isPending, navigate } = usePendingNavigation();
 
   const select = (key: FilterKey, value: string | undefined) => {
-    startTransition(() => router.push(coursesHref(filters, { [key]: value }, undefined, pathname), { scroll: false }));
+    navigate(coursesHref(filters, { [key]: value }, undefined, pathname), { scroll: false });
   };
 
   const extraFilterCount = [filters.price, filters.rating].filter(Boolean).length;

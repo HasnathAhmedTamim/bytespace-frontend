@@ -1,10 +1,9 @@
-import Link from "next/link";
-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CourseCard } from "@/components/courses/course-card";
 import { Section } from "@/components/shared/section";
 import { Pagination } from "@/components/shared/pagination";
+import { PendingLink, PendingRegion } from "@/components/shared/pending-navigation";
 import { routes } from "@/constants/navigation";
 import { catalogue } from "@/data/catalogue";
 import { courseResultsId, coursesHref, queryCourses, type CourseFilters } from "@/lib/course-filters";
@@ -21,6 +20,8 @@ type CourseResultsProps = {
   paginate?: boolean;
   className?: string;
   gridClassName?: string;
+  /** Morph course images into the course page; see `CourseCard`. */
+  imageTransition?: boolean;
 };
 
 export function CourseResults({
@@ -31,6 +32,7 @@ export function CourseResults({
   paginate = true,
   className,
   gridClassName,
+  imageTransition = false,
 }: CourseResultsProps) {
   const { items, total, page, pageCount, start } = queryCourses(
     courses,
@@ -53,34 +55,41 @@ export function CourseResults({
             : "No courses match your filters"}
         </p>
 
-        {items.length > 0 ? (
-          <ul className={cn("grid gap-5 md:grid-cols-2 md:gap-4 lg:gap-6 xl:grid-cols-3 xl:gap-10 3xl:pl-px", gridClassName)}>
-            {items.map((course, index) => (
-              <li key={course.slug} className="flex min-w-0">
-                <CourseCard course={course} className="w-full" imagePreload={index < 3} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <Card variant="dashed" className="flex flex-col items-center gap-4 px-6 py-16 text-center">
-            <p className="heading-xs text-ink">No courses found</p>
-            <p className="max-w-md body-m text-neutral-400">
-              Try a different search term or remove some filters to see more courses.
-            </p>
-            <Button asChild variant="primary">
-              <Link href={coursesHref({}, {}, undefined, pathname)}>Clear all filters</Link>
-            </Button>
-          </Card>
-        )}
+        <PendingRegion label="Loading courses">
+          {items.length > 0 ? (
+            <ul className={cn("grid gap-5 md:grid-cols-2 md:gap-4 lg:gap-6 xl:grid-cols-3 xl:gap-10 3xl:pl-px", gridClassName)}>
+              {items.map((course, index) => (
+                <li key={course.slug} className="flex min-w-0">
+                  <CourseCard
+                    course={course}
+                    className="w-full"
+                    imagePreload={index < 3}
+                    imageTransition={imageTransition}
+                  />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <Card variant="dashed" className="flex flex-col items-center gap-4 px-6 py-16 text-center">
+              <p className="heading-xs text-ink">No courses found</p>
+              <p className="max-w-md body-m text-neutral-400">
+                Try a different search term or remove some filters to see more courses.
+              </p>
+              <Button asChild variant="primary">
+                <PendingLink href={coursesHref({}, {}, undefined, pathname)}>Clear all filters</PendingLink>
+              </Button>
+            </Card>
+          )}
 
-        {paginate && (
-          <Pagination
-            page={page}
-            pageCount={pageCount}
-            hrefForPage={(target) => coursesHref(filters, { page: target }, courseResultsId, pathname)}
-            className="mt-12 md:mt-16 xl:mt-18"
-          />
-        )}
+          {paginate && (
+            <Pagination
+              page={page}
+              pageCount={pageCount}
+              hrefForPage={(target) => coursesHref(filters, { page: target }, courseResultsId, pathname)}
+              className="mt-12 md:mt-16 xl:mt-18"
+            />
+          )}
+        </PendingRegion>
     </Section>
   );
 }

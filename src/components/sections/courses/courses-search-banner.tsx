@@ -1,7 +1,7 @@
 import Form from "next/form";
 
 import { Input } from "@/components/ui/input";
-import { SearchIcon } from "@/components/shared/icons";
+import { SearchFieldIcon } from "@/components/shared/search-status";
 import { Section } from "@/components/shared/section";
 import { SearchScopeSelect } from "@/components/courses/search-scope-select";
 import { routes } from "@/constants/navigation";
@@ -35,7 +35,7 @@ export function CoursesSearchBanner({ filters = {} }: CoursesSearchBannerProps) 
           Search courses
         </label>
         <div className="relative flex-1">
-          <SearchIcon className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-neutral-400 md:left-6 md:size-6" />
+          <SearchFieldIcon className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-neutral-400 md:left-6 md:size-6" />
           <Input
             key={query}
             id="courses-search"

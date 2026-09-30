@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 
 import { CourseTabs } from "@/components/courses/course-tabs";
 import { Container } from "@/components/shared/container";
+import { PageTransition } from "@/components/shared/page-transition";
+import { ScrollToTop } from "@/components/shared/scroll-to-top";
 import { CourseEnrollCard } from "@/components/sections/course-details/course-enroll-card";
 import { CourseHero } from "@/components/sections/course-details/course-hero";
 import { CoursePreview } from "@/components/sections/course-details/course-preview";
@@ -28,7 +30,7 @@ export default async function CourseLayout({ params, children }: LayoutProps<"/c
   if (!course) notFound();
 
   return (
-    <div className="isolate overflow-x-clip pt-(--header-height)">
+    <PageTransition className="isolate overflow-x-clip pt-(--header-height)">
       <Container>
         <div className="grid grid-cols-1 pb-16 md:pb-17 lg:grid-cols-[minmax(0,1fr)_22.5rem] lg:grid-rows-[auto_auto_1fr] lg:gap-x-10 xl:grid-cols-[minmax(0,1fr)_25.75rem] xl:gap-x-16 xl:pb-16 3xl:gap-x-15.75">
           <div
@@ -47,6 +49,7 @@ export default async function CourseLayout({ params, children }: LayoutProps<"/c
           </div>
         </div>
       </Container>
-    </div>
+      <ScrollToTop />
+    </PageTransition>
   );
 }
