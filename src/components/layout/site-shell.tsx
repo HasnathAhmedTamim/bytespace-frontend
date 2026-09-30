@@ -11,7 +11,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         Skip to content
       </a>
       <SiteHeader />
-      <main id="main-content" className="flex flex-1 flex-col">
+      <main id="main-content" className="@container flex flex-1 flex-col">
         {children}
       </main>
       <SiteFooter />

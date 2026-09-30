@@ -8,9 +8,11 @@ type SectionHeadingProps = {
   eyebrow?: React.ReactNode;
   align?: "left" | "center";
   tone?: "dark" | "light";
+  size?: "m" | "s";
   as?: "h1" | "h2" | "h3";
   id?: string;
   className?: string;
+  titleClassName?: string;
   descriptionClassName?: string;
 };
 
@@ -20,9 +22,11 @@ export function SectionHeading({
   eyebrow,
   align = "center",
   tone = "dark",
+  size = "m",
   as: Heading = "h2",
   id,
   className,
+  titleClassName,
   descriptionClassName,
 }: SectionHeadingProps) {
   const isLight = tone === "light";
@@ -40,7 +44,14 @@ export function SectionHeading({
           {eyebrow}
         </span>
       )}
-      <Heading id={id} className={cn("heading-s md:heading-m", isLight ? "text-white" : "text-ink")}>
+      <Heading
+        id={id}
+        className={cn(
+          size === "m" ? "heading-s md:heading-m" : "heading-s",
+          isLight ? "text-white" : "text-ink",
+          titleClassName
+        )}
+      >
         {title}
       </Heading>
       {description && (
