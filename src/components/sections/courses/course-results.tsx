@@ -17,6 +17,8 @@ type CourseResultsProps = {
   /** Page the filters and pagination link to; defaults to the Courses page. */
   pathname?: string;
   perPage?: number;
+  /** Set to false to show only the first page of results. */
+  paginate?: boolean;
   className?: string;
   gridClassName?: string;
 };
@@ -26,10 +28,15 @@ export function CourseResults({
   courses = catalogue,
   pathname = routes.courses,
   perPage,
+  paginate = true,
   className,
   gridClassName,
 }: CourseResultsProps) {
-  const { items, total, page, pageCount, start } = queryCourses(courses, filters, perPage);
+  const { items, total, page, pageCount, start } = queryCourses(
+    courses,
+    paginate ? filters : { ...filters, page: undefined },
+    perPage
+  );
 
   return (
     <Section
@@ -66,12 +73,14 @@ export function CourseResults({
           </Card>
         )}
 
-        <Pagination
-          page={page}
-          pageCount={pageCount}
-          hrefForPage={(target) => coursesHref(filters, { page: target }, courseResultsId, pathname)}
-          className="mt-12 md:mt-16 xl:mt-18"
-        />
+        {paginate && (
+          <Pagination
+            page={page}
+            pageCount={pageCount}
+            hrefForPage={(target) => coursesHref(filters, { page: target }, courseResultsId, pathname)}
+            className="mt-12 md:mt-16 xl:mt-18"
+          />
+        )}
     </Section>
   );
 }

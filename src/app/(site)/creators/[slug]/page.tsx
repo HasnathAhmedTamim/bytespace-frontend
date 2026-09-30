@@ -10,7 +10,7 @@ import { catalogue } from "@/data/catalogue";
 import { getCreator } from "@/data/creators";
 import { categoryOptions, parseCourseFilters } from "@/lib/course-filters";
 
-const creatorCoursesPerPage = 6;
+const creatorCoursesShown = 6;
 
 export async function generateMetadata({ params }: PageProps<"/creators/[slug]">): Promise<Metadata> {
   const creator = getCreator((await params).slug);
@@ -45,7 +45,8 @@ export default async function CreatorPage({ params, searchParams }: PageProps<"/
         filters={filters}
         courses={courses}
         pathname={pathname}
-        perPage={creatorCoursesPerPage}
+        perPage={creatorCoursesShown}
+        paginate={false}
         className="pt-8 md:pt-10 xl:pt-10 xl:pb-15.25 3xl:pt-10"
         gridClassName="3xl:-ml-px 3xl:pl-0 3xl:pr-0.5"
       />
