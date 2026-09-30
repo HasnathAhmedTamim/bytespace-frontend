@@ -20,6 +20,8 @@ type CourseResultsProps = {
   paginate?: boolean;
   className?: string;
   gridClassName?: string;
+  /** Morph course images into the course page; see `CourseCard`. */
+  imageTransition?: boolean;
 };
 
 export function CourseResults({
@@ -30,6 +32,7 @@ export function CourseResults({
   paginate = true,
   className,
   gridClassName,
+  imageTransition = false,
 }: CourseResultsProps) {
   const { items, total, page, pageCount, start } = queryCourses(
     courses,
@@ -57,7 +60,12 @@ export function CourseResults({
             <ul className={cn("grid gap-5 md:grid-cols-2 md:gap-4 lg:gap-6 xl:grid-cols-3 xl:gap-10 3xl:pl-px", gridClassName)}>
               {items.map((course, index) => (
                 <li key={course.slug} className="flex min-w-0">
-                  <CourseCard course={course} className="w-full" imagePreload={index < 3} />
+                  <CourseCard
+                    course={course}
+                    className="w-full"
+                    imagePreload={index < 3}
+                    imageTransition={imageTransition}
+                  />
                 </li>
               ))}
             </ul>

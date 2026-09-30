@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { LevelIcon } from "@/components/courses/filter-icons";
+import { CourseImageTransition } from "@/components/shared/page-transition";
 import { cardVariants } from "@/components/ui/card";
 import { images } from "@/constants/images";
 import { routes } from "@/constants/navigation";
@@ -26,6 +27,8 @@ type CourseCardProps = {
   className?: string;
   imageSizes?: string;
   imagePreload?: boolean;
+  /** Morph the image into the course page preview; only where each course appears once on the page. */
+  imageTransition?: boolean;
 };
 
 export function CourseCard({
@@ -34,9 +37,20 @@ export function CourseCard({
   className,
   imageSizes = "(min-width: 1280px) 341px, (min-width: 768px) 45vw, 90vw",
   imagePreload = false,
+  imageTransition = false,
 }: CourseCardProps) {
   const meta = [`${course.lessons} Lessons`, course.duration, `${course.comments} Comments`];
   const isInverse = tone === "inverse";
+  const image = (
+    <Image
+      src={course.image}
+      alt=""
+      fill
+      sizes={imageSizes}
+      preload={imagePreload}
+      className="object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+  );
 
   return (
     <article
@@ -48,14 +62,13 @@ export function CourseCard({
       )}
     >
       <div className="relative aspect-341/196 overflow-hidden rounded-lg bg-neutral-100">
-        <Image
-          src={course.image}
-          alt=""
-          fill
-          sizes={imageSizes}
-          preload={imagePreload}
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+        {imageTransition ? (
+          <CourseImageTransition slug={course.slug}>
+            <div className="absolute inset-0 overflow-hidden rounded-lg">{image}</div>
+          </CourseImageTransition>
+        ) : (
+          image
+        )}
         <ul
           className={cn(
             "absolute right-1 flex flex-wrap",

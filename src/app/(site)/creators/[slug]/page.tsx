@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { PageTransition } from "@/components/shared/page-transition";
 import { PendingNavigationProvider } from "@/components/shared/pending-navigation";
 import { Section } from "@/components/shared/section";
 import { CourseResults } from "@/components/sections/courses/course-results";
@@ -36,7 +37,7 @@ export default async function CreatorPage({ params, searchParams }: PageProps<"/
   const pathname = routes.creator(creator.slug);
 
   return (
-    <>
+    <PageTransition>
       <CreatorHero creator={creator} products={courses.length} />
       <PendingNavigationProvider>
         <Section aria-label="Course filters">
@@ -52,8 +53,9 @@ export default async function CreatorPage({ params, searchParams }: PageProps<"/
           paginate={false}
           className="pt-8 md:pt-10 xl:pt-10 xl:pb-15.25 3xl:pt-10"
           gridClassName="3xl:-ml-px 3xl:pl-0 3xl:pr-0.5"
+          imageTransition
         />
       </PendingNavigationProvider>
-    </>
+    </PageTransition>
   );
 }
